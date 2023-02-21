@@ -1,0 +1,27 @@
+{"required": [
+    "message",
+    "_id"
+],
+"properties": {
+    "message": {
+        "type": "string",
+        "default": "",
+        "title": "The message Schema",
+        "examples": [
+            "Cadastro realizado com sucesso"
+        ]
+    },
+    "_id": {
+        "type": "string",
+        "default": "",
+        "title": "The _id Schema",
+        "examples": [
+            "jogfODIlXsqxNFS2"
+        ]
+    }
+},
+"examples": [{
+    "message": "Cadastro realizado com sucesso",
+    "_id": "jogfODIlXsqxNFS2"
+}]
+}

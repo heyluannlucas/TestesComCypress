@@ -1,0 +1,145 @@
+{
+  "stats": {
+    "suites": 1,
+    "tests": 3,
+    "passes": 3,
+    "pending": 0,
+    "failures": 0,
+    "start": "2022-06-22T16:57:07.556Z",
+    "end": "2022-06-22T16:57:08.634Z",
+    "duration": 1078,
+    "testsRegistered": 3,
+    "passPercent": 100,
+    "pendingPercent": 0,
+    "other": 0,
+    "hasOther": false,
+    "skipped": 0,
+    "hasSkipped": false
+  },
+  "results": [
+    {
+      "uuid": "3ba4abaf-1141-4ade-870c-9dde5c347a7a",
+      "title": "",
+      "fullFile": "cypress/integration/3.produtos/3.2-getProdutos.spec.js",
+      "file": "cypress/integration/3.produtos/3.2-getProdutos.spec.js",
+      "beforeHooks": [],
+      "afterHooks": [],
+      "tests": [],
+      "suites": [
+        {
+          "uuid": "b6092a5b-4280-42e6-ab36-609e0942c18b",
+          "title": "CT-RP 007 -  CONSULTA DE DADOS EM /PRODUTOS",
+          "fullFile": "",
+          "file": "",
+          "beforeHooks": [],
+          "afterHooks": [],
+          "tests": [
+            {
+              "title": "Deve buscar por todos os produtos",
+              "fullTitle": "CT-RP 007 -  CONSULTA DE DADOS EM /PRODUTOS Deve buscar por todos os produtos",
+              "timedOut": null,
+              "duration": 310,
+              "state": "passed",
+              "speed": "fast",
+              "pass": true,
+              "fail": false,
+              "pending": false,
+              "context": null,
+              "code": "cy.getAllProducts().should(res => {\n  cy.contractValidation(res, 'GET/produtos', 200);\n  expect(res.body.quantidade).to.be.greaterThan(0);\n});",
+              "err": {},
+              "uuid": "154bc0d5-76cf-4889-a4dd-8aae0f7c06ff",
+              "parentUUID": "b6092a5b-4280-42e6-ab36-609e0942c18b",
+              "isHook": false,
+              "skipped": false
+            },
+            {
+              "title": "Deve buscar produtos por id",
+              "fullTitle": "CT-RP 007 -  CONSULTA DE DADOS EM /PRODUTOS Deve buscar produtos por id",
+              "timedOut": null,
+              "duration": 495,
+              "state": "passed",
+              "speed": "fast",
+              "pass": true,
+              "fail": false,
+              "pending": false,
+              "context": null,
+              "code": "cy.getAllProducts().then(allProducts => {\n  cy.getProductById(allProducts.body.produtos[0]._id).should(id => {\n    _responsesValidation.default.productById(id, allProducts);\n    cy.contractValidation(id, 'GET/produtos', '200-byID');\n  });\n});",
+              "err": {},
+              "uuid": "61221bf8-5e7c-4aaf-af29-33e94298c534",
+              "parentUUID": "b6092a5b-4280-42e6-ab36-609e0942c18b",
+              "isHook": false,
+              "skipped": false
+            },
+            {
+              "title": "Deve buscar produto por id inválido",
+              "fullTitle": "CT-RP 007 -  CONSULTA DE DADOS EM /PRODUTOS Deve buscar produto por id inválido",
+              "timedOut": null,
+              "duration": 249,
+              "state": "passed",
+              "speed": "fast",
+              "pass": true,
+              "fail": false,
+              "pending": false,
+              "context": null,
+              "code": "cy.getProductById(_fakerBr.default.random.uui).should(res => {\n  _responsesValidation.default.notFound(res);\n  cy.contractValidation(res, 'GET/produtos', 400);\n});",
+              "err": {},
+              "uuid": "16255472-31fa-4f50-b727-907405e7adfe",
+              "parentUUID": "b6092a5b-4280-42e6-ab36-609e0942c18b",
+              "isHook": false,
+              "skipped": false
+            }
+          ],
+          "suites": [],
+          "passes": [
+            "154bc0d5-76cf-4889-a4dd-8aae0f7c06ff",
+            "61221bf8-5e7c-4aaf-af29-33e94298c534",
+            "16255472-31fa-4f50-b727-907405e7adfe"
+          ],
+          "failures": [],
+          "pending": [],
+          "skipped": [],
+          "duration": 1054,
+          "root": false,
+          "rootEmpty": false,
+          "_timeout": 2000
+        }
+      ],
+      "passes": [],
+      "failures": [],
+      "pending": [],
+      "skipped": [],
+      "duration": 0,
+      "root": true,
+      "rootEmpty": true,
+      "_timeout": 2000
+    }
+  ],
+  "meta": {
+    "mocha": {
+      "version": "7.0.1"
+    },
+    "mochawesome": {
+      "options": {
+        "quiet": false,
+        "reportFilename": "mochawesome",
+        "saveHtml": false,
+        "saveJson": true,
+        "consoleReporter": "spec",
+        "useInlineDiffs": false,
+        "code": true
+      },
+      "version": "7.1.3"
+    },
+    "marge": {
+      "options": {
+        "id": "default",
+        "reportDir": "cypress/reports/mocha",
+        "quite": true,
+        "overwrite": false,
+        "html": false,
+        "json": true
+      },
+      "version": "6.2.0"
+    }
+  }
+}

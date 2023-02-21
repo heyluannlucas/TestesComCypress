@@ -1,0 +1,126 @@
+{
+  "stats": {
+    "suites": 1,
+    "tests": 2,
+    "passes": 2,
+    "pending": 0,
+    "failures": 0,
+    "start": "2022-06-21T23:31:15.642Z",
+    "end": "2022-06-21T23:31:16.596Z",
+    "duration": 954,
+    "testsRegistered": 2,
+    "passPercent": 100,
+    "pendingPercent": 0,
+    "other": 0,
+    "hasOther": false,
+    "skipped": 0,
+    "hasSkipped": false
+  },
+  "results": [
+    {
+      "uuid": "1cbb0136-88f4-4bf2-ba2d-d403434d27f1",
+      "title": "",
+      "fullFile": "cypress/integration/3.produtos/3.2-getProdutos.spec.js",
+      "file": "cypress/integration/3.produtos/3.2-getProdutos.spec.js",
+      "beforeHooks": [],
+      "afterHooks": [],
+      "tests": [],
+      "suites": [
+        {
+          "uuid": "1edac446-2825-4459-861b-8b0ae52afcf4",
+          "title": "CT-RP 007 -  CONSULTA DE DADOS EM /PRODUTOS",
+          "fullFile": "",
+          "file": "",
+          "beforeHooks": [],
+          "afterHooks": [],
+          "tests": [
+            {
+              "title": "Deve buscar por todos os produtos",
+              "fullTitle": "CT-RP 007 -  CONSULTA DE DADOS EM /PRODUTOS Deve buscar por todos os produtos",
+              "timedOut": null,
+              "duration": 436,
+              "state": "passed",
+              "speed": "fast",
+              "pass": true,
+              "fail": false,
+              "pending": false,
+              "context": null,
+              "code": "cy.getAllProducts().should(res => {\n  cy.contractValidation(res, 'GET/produtos', 200);\n  expect(res.body.quantidade).to.be.greaterThan(0);\n});",
+              "err": {},
+              "uuid": "a5629f4e-3f6d-462a-8705-b02ca5af9a77",
+              "parentUUID": "1edac446-2825-4459-861b-8b0ae52afcf4",
+              "isHook": false,
+              "skipped": false
+            },
+            {
+              "title": "Deve buscar produtos por id",
+              "fullTitle": "CT-RP 007 -  CONSULTA DE DADOS EM /PRODUTOS Deve buscar produtos por id",
+              "timedOut": null,
+              "duration": 494,
+              "state": "passed",
+              "speed": "fast",
+              "pass": true,
+              "fail": false,
+              "pending": false,
+              "context": null,
+              "code": "cy.getAllProducts().then(allProducts => {\n  cy.getProductById(allProducts.body.produtos[0]._id).should(id => {\n    _responsesValidation.default.productById(id, allProducts);\n    cy.contractValidation(id, 'GET/produtos', '200-byID');\n  });\n});",
+              "err": {},
+              "uuid": "da552931-9d79-4245-9057-8a6ffc691dee",
+              "parentUUID": "1edac446-2825-4459-861b-8b0ae52afcf4",
+              "isHook": false,
+              "skipped": false
+            }
+          ],
+          "suites": [],
+          "passes": [
+            "a5629f4e-3f6d-462a-8705-b02ca5af9a77",
+            "da552931-9d79-4245-9057-8a6ffc691dee"
+          ],
+          "failures": [],
+          "pending": [],
+          "skipped": [],
+          "duration": 930,
+          "root": false,
+          "rootEmpty": false,
+          "_timeout": 2000
+        }
+      ],
+      "passes": [],
+      "failures": [],
+      "pending": [],
+      "skipped": [],
+      "duration": 0,
+      "root": true,
+      "rootEmpty": true,
+      "_timeout": 2000
+    }
+  ],
+  "meta": {
+    "mocha": {
+      "version": "7.0.1"
+    },
+    "mochawesome": {
+      "options": {
+        "quiet": false,
+        "reportFilename": "mochawesome",
+        "saveHtml": false,
+        "saveJson": true,
+        "consoleReporter": "spec",
+        "useInlineDiffs": false,
+        "code": true
+      },
+      "version": "7.1.3"
+    },
+    "marge": {
+      "options": {
+        "id": "default",
+        "reportDir": "cypress/reports/mocha",
+        "quite": true,
+        "overwrite": false,
+        "html": false,
+        "json": true
+      },
+      "version": "6.2.0"
+    }
+  }
+}

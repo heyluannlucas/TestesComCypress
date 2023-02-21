@@ -1,0 +1,42 @@
+{
+"type": "object",
+    "default": {},
+    "title": "Root Schema",
+    "required": [
+        "message",
+        "idCarrinhos"
+    ],
+    "properties": {
+        "message": {
+            "type": "string",
+            "default": "",
+            "title": "The message Schema",
+            "examples": [
+                "Não é permitido excluir produto que faz parte de carrinho"
+            ]
+        },
+        "idCarrinho": {
+            "type": "array",
+            "default": [],
+            "title": "The idCarrinho Schema",
+            "items": {
+                "type": "string",
+                "default": "",
+                "title": "A Schema",
+                "examples": [
+                    "qbMqntef4iTOwWfg, yILJY1eaAUC6hyRc"
+                ]
+            },
+            "examples": [
+                [
+                    "qbMqntef4iTOwWfg, yILJY1eaAUC6hyRc"]
+            ]
+        }
+    },
+    "examples": [{
+        "message": "Não é permitido excluir produto que faz parte de carrinho",
+        "idCarrinho": [
+            "qbMqntef4iTOwWfg, yILJY1eaAUC6hyRc"
+        ]
+    }]
+}

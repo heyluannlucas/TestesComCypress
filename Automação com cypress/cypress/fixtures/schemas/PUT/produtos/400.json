@@ -1,0 +1,21 @@
+{
+    "type": "object",
+    "default": {},
+    "title": "Root Schema",
+    "required": [
+        "message"
+    ],
+    "properties": {
+        "message": {
+            "type": "string",
+            "default": "",
+            "title": "The message Schema",
+            "examples": [
+                "Já existe produto com esse nome"
+            ]
+        }
+    },
+    "examples": [{
+        "message": "Já existe produto com esse nome"
+    }]
+}

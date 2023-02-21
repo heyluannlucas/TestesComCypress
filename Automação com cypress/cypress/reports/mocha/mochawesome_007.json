@@ -1,0 +1,126 @@
+{
+  "stats": {
+    "suites": 1,
+    "tests": 2,
+    "passes": 2,
+    "pending": 0,
+    "failures": 0,
+    "start": "2022-06-21T01:50:01.589Z",
+    "end": "2022-06-21T01:50:04.612Z",
+    "duration": 3023,
+    "testsRegistered": 2,
+    "passPercent": 100,
+    "pendingPercent": 0,
+    "other": 0,
+    "hasOther": false,
+    "skipped": 0,
+    "hasSkipped": false
+  },
+  "results": [
+    {
+      "uuid": "37fb8ca4-c338-4369-91c0-2c47ec325e62",
+      "title": "",
+      "fullFile": "cypress/integration/4.carrinhos/4.3-deleteCarrinhos.spec.js",
+      "file": "cypress/integration/4.carrinhos/4.3-deleteCarrinhos.spec.js",
+      "beforeHooks": [],
+      "afterHooks": [],
+      "tests": [],
+      "suites": [
+        {
+          "uuid": "e57cdb5a-55a4-418c-bdd2-1aa5ce74dbd2",
+          "title": "Testes para /carrinhos - DELETE",
+          "fullFile": "",
+          "file": "",
+          "beforeHooks": [],
+          "afterHooks": [],
+          "tests": [
+            {
+              "title": "Deve concluir a compra",
+              "fullTitle": "Testes para /carrinhos - DELETE Deve concluir a compra",
+              "timedOut": null,
+              "duration": 1123,
+              "state": "passed",
+              "speed": "fast",
+              "pass": true,
+              "fail": false,
+              "pending": false,
+              "context": null,
+              "code": "cy.buyItOrNot(tokenAdmin, 'concluir-compra').should(res => {\n  _resultsValidation.default.deleted(res);\n  cy.contractValidation(res, 'DELETE/usuarios', 200);\n});",
+              "err": {},
+              "uuid": "b68c8ff8-7853-4adb-b222-8169a2fce451",
+              "parentUUID": "e57cdb5a-55a4-418c-bdd2-1aa5ce74dbd2",
+              "isHook": false,
+              "skipped": false
+            },
+            {
+              "title": "Deve cancelar a compra e retornar produtos para estoque",
+              "fullTitle": "Testes para /carrinhos - DELETE Deve cancelar a compra e retornar produtos para estoque",
+              "timedOut": null,
+              "duration": 1057,
+              "state": "passed",
+              "speed": "fast",
+              "pass": true,
+              "fail": false,
+              "pending": false,
+              "context": null,
+              "code": "cy.buyItOrNot(tokenAdmin, 'cancelar-compra').should(res => {\n  _resultsValidation.default.deleteAndReturn(res);\n  cy.contractValidation(res, 'DELETE/usuarios', 200);\n});",
+              "err": {},
+              "uuid": "c297a6e3-a66f-4cd7-b130-3962c2fda7cd",
+              "parentUUID": "e57cdb5a-55a4-418c-bdd2-1aa5ce74dbd2",
+              "isHook": false,
+              "skipped": false
+            }
+          ],
+          "suites": [],
+          "passes": [
+            "b68c8ff8-7853-4adb-b222-8169a2fce451",
+            "c297a6e3-a66f-4cd7-b130-3962c2fda7cd"
+          ],
+          "failures": [],
+          "pending": [],
+          "skipped": [],
+          "duration": 2180,
+          "root": false,
+          "rootEmpty": false,
+          "_timeout": 2000
+        }
+      ],
+      "passes": [],
+      "failures": [],
+      "pending": [],
+      "skipped": [],
+      "duration": 0,
+      "root": true,
+      "rootEmpty": true,
+      "_timeout": 2000
+    }
+  ],
+  "meta": {
+    "mocha": {
+      "version": "7.0.1"
+    },
+    "mochawesome": {
+      "options": {
+        "quiet": false,
+        "reportFilename": "mochawesome",
+        "saveHtml": false,
+        "saveJson": true,
+        "consoleReporter": "spec",
+        "useInlineDiffs": false,
+        "code": true
+      },
+      "version": "7.1.3"
+    },
+    "marge": {
+      "options": {
+        "id": "default",
+        "reportDir": "cypress/reports/mocha",
+        "quite": true,
+        "overwrite": false,
+        "html": false,
+        "json": true
+      },
+      "version": "6.2.0"
+    }
+  }
+}

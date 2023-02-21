@@ -1,0 +1,242 @@
+{
+  "stats": {
+    "suites": 1,
+    "tests": 7,
+    "passes": 2,
+    "pending": 0,
+    "failures": 5,
+    "start": "2022-06-22T16:56:39.117Z",
+    "end": "2022-06-22T16:56:43.097Z",
+    "duration": 3980,
+    "testsRegistered": 7,
+    "passPercent": 28.57142857142857,
+    "pendingPercent": 0,
+    "other": 0,
+    "hasOther": false,
+    "skipped": 0,
+    "hasSkipped": false
+  },
+  "results": [
+    {
+      "uuid": "fa5b8617-7644-4e8c-b1ba-259cf7886536",
+      "title": "",
+      "fullFile": "cypress/integration/1.usuarios/1.1-postUsuarios.spec.js",
+      "file": "cypress/integration/1.usuarios/1.1-postUsuarios.spec.js",
+      "beforeHooks": [],
+      "afterHooks": [],
+      "tests": [],
+      "suites": [
+        {
+          "uuid": "c6e66437-a585-4feb-a2ad-7903b38c28b8",
+          "title": "CT-RU 001 - INSERÇÃO DE DADOS EM /USUÁRIOS",
+          "fullFile": "",
+          "file": "",
+          "beforeHooks": [],
+          "afterHooks": [],
+          "tests": [
+            {
+              "title": "Cadastrar um novo usuário com sucesso",
+              "fullTitle": "CT-RU 001 - INSERÇÃO DE DADOS EM /USUÁRIOS Cadastrar um novo usuário com sucesso",
+              "timedOut": null,
+              "duration": 911,
+              "state": "passed",
+              "speed": "fast",
+              "pass": true,
+              "fail": false,
+              "pending": false,
+              "context": null,
+              "code": "cy.postUser(newUser).as('id').should(res => {\n  _responsesValidation.default.successful(res);\n  cy.contractValidation(res, 'POST/usuarios', 201);\n});\ncy.get('@userId').then(id => {\n  cy.deleteUser(id.body._id);\n});",
+              "err": {},
+              "uuid": "d18f21f3-606b-4226-a229-8c9c54ba1f9c",
+              "parentUUID": "c6e66437-a585-4feb-a2ad-7903b38c28b8",
+              "isHook": false,
+              "skipped": false
+            },
+            {
+              "title": "Não deve cadastrar com email já existente",
+              "fullTitle": "CT-RU 001 - INSERÇÃO DE DADOS EM /USUÁRIOS Não deve cadastrar com email já existente",
+              "timedOut": null,
+              "duration": 661,
+              "state": "passed",
+              "speed": "fast",
+              "pass": true,
+              "fail": false,
+              "pending": false,
+              "context": null,
+              "code": "cy.postUser(newUser).as('firstUser');\ncy.postUser(newUser).should(res => {\n  _responsesValidation.default.unsuccessful(res);\n  cy.contractValidation(res, 'POST/usuarios', 400);\n});\ncy.get('@firstUser').then(id => {\n  cy.deleteUser(id.body._id);\n});",
+              "err": {},
+              "uuid": "a4dec6b3-8d35-4900-abd0-c8ef3c95d877",
+              "parentUUID": "c6e66437-a585-4feb-a2ad-7903b38c28b8",
+              "isHook": false,
+              "skipped": false
+            },
+            {
+              "title": "Não deve cadastrar usuário sem email",
+              "fullTitle": "CT-RU 001 - INSERÇÃO DE DADOS EM /USUÁRIOS Não deve cadastrar usuário sem email",
+              "timedOut": null,
+              "duration": 492,
+              "state": "failed",
+              "speed": null,
+              "pass": false,
+              "fail": true,
+              "pending": false,
+              "context": null,
+              "code": "delete newUser.email;\ncy.postUserCodeTrue(newUser);",
+              "err": {
+                "message": "CypressError: `cy.request()` failed on:\n\nhttps://serverest.dev/usuarios/\n\nThe response we received from your web server was:\n\n  > 400: Bad Request\n\nThis was considered a failure because the status code was not `2xx` or `3xx`.\n\nIf you do not want status codes to cause failures pass the option: `failOnStatusCode: false`\n\n-----------------------------------------------------------\n\nThe request we sent was:\n\nMethod: POST\nURL: https://serverest.dev/usuarios/\nHeaders: {\n  \"Connection\": \"keep-alive\",\n  \"user-agent\": \"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Cypress/9.7.0 Chrome/100.0.4896.75 Electron/18.0.4 Safari/537.36\",\n  \"accept\": \"*/*\",\n  \"accept-encoding\": \"gzip, deflate\",\n  \"content-type\": \"application/json\",\n  \"content-length\": 77\n}\nBody: {\"nome\":\"Adelia Moreira\",\"password\":\"bmTLfE0eB6sToub\",\"administrador\":\"true\"}\n\n-----------------------------------------------------------\n\nThe response we got was:\n\nStatus: 400 - Bad Request\nHeaders: {\n  \"access-control-allow-origin\": \"*\",\n  \"x-dns-prefetch-control\": \"off\",\n  \"x-frame-options\": \"SAMEORIGIN\",\n  \"strict-transport-security\": \"max-age=15552000; includeSubDomains\",\n  \"x-download-options\": \"noopen\",\n  \"x-content-type-options\": \"nosniff\",\n  \"x-xss-protection\": \"1; mode=block\",\n  \"x-moesif-transaction-id\": \"33ca5d4e-452b-48f3-b399-2670fe47feb2\",\n  \"content-type\": \"application/json; charset=utf-8\",\n  \"x-cloud-trace-context\": \"488bb13abb113ddb1e8c6f982bd5247b\",\n  \"date\": \"Wed, 22 Jun 2022 16:56:42 GMT\",\n  \"server\": \"Google Frontend\",\n  \"content-length\": \"40\"\n}\nBody: {\n  \"email\": \"email é obrigatório\"\n}\n\n\nhttps://on.cypress.io/request",
+                "estack": "CypressError: `cy.request()` failed on:\n\nhttps://serverest.dev/usuarios/\n\nThe response we received from your web server was:\n\n  > 400: Bad Request\n\nThis was considered a failure because the status code was not `2xx` or `3xx`.\n\nIf you do not want status codes to cause failures pass the option: `failOnStatusCode: false`\n\n-----------------------------------------------------------\n\nThe request we sent was:\n\nMethod: POST\nURL: https://serverest.dev/usuarios/\nHeaders: {\n  \"Connection\": \"keep-alive\",\n  \"user-agent\": \"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Cypress/9.7.0 Chrome/100.0.4896.75 Electron/18.0.4 Safari/537.36\",\n  \"accept\": \"*/*\",\n  \"accept-encoding\": \"gzip, deflate\",\n  \"content-type\": \"application/json\",\n  \"content-length\": 77\n}\nBody: {\"nome\":\"Adelia Moreira\",\"password\":\"bmTLfE0eB6sToub\",\"administrador\":\"true\"}\n\n-----------------------------------------------------------\n\nThe response we got was:\n\nStatus: 400 - Bad Request\nHeaders: {\n  \"access-control-allow-origin\": \"*\",\n  \"x-dns-prefetch-control\": \"off\",\n  \"x-frame-options\": \"SAMEORIGIN\",\n  \"strict-transport-security\": \"max-age=15552000; includeSubDomains\",\n  \"x-download-options\": \"noopen\",\n  \"x-content-type-options\": \"nosniff\",\n  \"x-xss-protection\": \"1; mode=block\",\n  \"x-moesif-transaction-id\": \"33ca5d4e-452b-48f3-b399-2670fe47feb2\",\n  \"content-type\": \"application/json; charset=utf-8\",\n  \"x-cloud-trace-context\": \"488bb13abb113ddb1e8c6f982bd5247b\",\n  \"date\": \"Wed, 22 Jun 2022 16:56:42 GMT\",\n  \"server\": \"Google Frontend\",\n  \"content-length\": \"40\"\n}\nBody: {\n  \"email\": \"email é obrigatório\"\n}\n\n\nhttps://on.cypress.io/request\n    at https://serverest.dev/__cypress/runner/cypress_runner.js:165434:80\n    at tryCatcher (https://serverest.dev/__cypress/runner/cypress_runner.js:13022:23)\n    at Promise._settlePromiseFromHandler (https://serverest.dev/__cypress/runner/cypress_runner.js:10957:31)\n    at Promise._settlePromise (https://serverest.dev/__cypress/runner/cypress_runner.js:11014:18)\n    at Promise._settlePromise0 (https://serverest.dev/__cypress/runner/cypress_runner.js:11059:10)\n    at Promise._settlePromises (https://serverest.dev/__cypress/runner/cypress_runner.js:11139:18)\n    at _drainQueueStep (https://serverest.dev/__cypress/runner/cypress_runner.js:7729:12)\n    at _drainQueue (https://serverest.dev/__cypress/runner/cypress_runner.js:7722:9)\n    at Async.../../node_modules/bluebird/js/release/async.js.Async._drainQueues (https://serverest.dev/__cypress/runner/cypress_runner.js:7738:5)\n    at Async.drainQueues (https://serverest.dev/__cypress/runner/cypress_runner.js:7608:14)\nFrom Your Spec Code:\n    at Context.eval (https://serverest.dev/__cypress/tests?p=cypress\\support\\index.js:606:6)",
+                "diff": null
+              },
+              "uuid": "8e56f52b-517d-4f05-8c46-dc10b209336f",
+              "parentUUID": "c6e66437-a585-4feb-a2ad-7903b38c28b8",
+              "isHook": false,
+              "skipped": false
+            },
+            {
+              "title": "Não deve cadastrar usuário sem nome",
+              "fullTitle": "CT-RU 001 - INSERÇÃO DE DADOS EM /USUÁRIOS Não deve cadastrar usuário sem nome",
+              "timedOut": null,
+              "duration": 459,
+              "state": "failed",
+              "speed": null,
+              "pass": false,
+              "fail": true,
+              "pending": false,
+              "context": null,
+              "code": "delete newUser.nome;\ncy.postUserCodeTrue(newUser);",
+              "err": {
+                "message": "CypressError: `cy.request()` failed on:\n\nhttps://serverest.dev/usuarios/\n\nThe response we received from your web server was:\n\n  > 400: Bad Request\n\nThis was considered a failure because the status code was not `2xx` or `3xx`.\n\nIf you do not want status codes to cause failures pass the option: `failOnStatusCode: false`\n\n-----------------------------------------------------------\n\nThe request we sent was:\n\nMethod: POST\nURL: https://serverest.dev/usuarios/\nHeaders: {\n  \"Connection\": \"keep-alive\",\n  \"user-agent\": \"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Cypress/9.7.0 Chrome/100.0.4896.75 Electron/18.0.4 Safari/537.36\",\n  \"accept\": \"*/*\",\n  \"accept-encoding\": \"gzip, deflate\",\n  \"content-type\": \"application/json\",\n  \"content-length\": 53\n}\nBody: {\"password\":\"bmTLfE0eB6sToub\",\"administrador\":\"true\"}\n\n-----------------------------------------------------------\n\nThe response we got was:\n\nStatus: 400 - Bad Request\nHeaders: {\n  \"access-control-allow-origin\": \"*\",\n  \"x-dns-prefetch-control\": \"off\",\n  \"x-frame-options\": \"SAMEORIGIN\",\n  \"strict-transport-security\": \"max-age=15552000; includeSubDomains\",\n  \"x-download-options\": \"noopen\",\n  \"x-content-type-options\": \"nosniff\",\n  \"x-xss-protection\": \"1; mode=block\",\n  \"x-moesif-transaction-id\": \"b8016d19-504b-4602-8fb2-39ff3b749c77\",\n  \"content-type\": \"application/json; charset=utf-8\",\n  \"x-cloud-trace-context\": \"7f3142095733352500612e78b4d154fe\",\n  \"date\": \"Wed, 22 Jun 2022 16:56:43 GMT\",\n  \"server\": \"Google Frontend\",\n  \"content-length\": \"76\"\n}\nBody: {\n  \"nome\": \"nome é obrigatório\",\n  \"email\": \"email é obrigatório\"\n}\n\n\nhttps://on.cypress.io/request",
+                "estack": "CypressError: `cy.request()` failed on:\n\nhttps://serverest.dev/usuarios/\n\nThe response we received from your web server was:\n\n  > 400: Bad Request\n\nThis was considered a failure because the status code was not `2xx` or `3xx`.\n\nIf you do not want status codes to cause failures pass the option: `failOnStatusCode: false`\n\n-----------------------------------------------------------\n\nThe request we sent was:\n\nMethod: POST\nURL: https://serverest.dev/usuarios/\nHeaders: {\n  \"Connection\": \"keep-alive\",\n  \"user-agent\": \"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Cypress/9.7.0 Chrome/100.0.4896.75 Electron/18.0.4 Safari/537.36\",\n  \"accept\": \"*/*\",\n  \"accept-encoding\": \"gzip, deflate\",\n  \"content-type\": \"application/json\",\n  \"content-length\": 53\n}\nBody: {\"password\":\"bmTLfE0eB6sToub\",\"administrador\":\"true\"}\n\n-----------------------------------------------------------\n\nThe response we got was:\n\nStatus: 400 - Bad Request\nHeaders: {\n  \"access-control-allow-origin\": \"*\",\n  \"x-dns-prefetch-control\": \"off\",\n  \"x-frame-options\": \"SAMEORIGIN\",\n  \"strict-transport-security\": \"max-age=15552000; includeSubDomains\",\n  \"x-download-options\": \"noopen\",\n  \"x-content-type-options\": \"nosniff\",\n  \"x-xss-protection\": \"1; mode=block\",\n  \"x-moesif-transaction-id\": \"b8016d19-504b-4602-8fb2-39ff3b749c77\",\n  \"content-type\": \"application/json; charset=utf-8\",\n  \"x-cloud-trace-context\": \"7f3142095733352500612e78b4d154fe\",\n  \"date\": \"Wed, 22 Jun 2022 16:56:43 GMT\",\n  \"server\": \"Google Frontend\",\n  \"content-length\": \"76\"\n}\nBody: {\n  \"nome\": \"nome é obrigatório\",\n  \"email\": \"email é obrigatório\"\n}\n\n\nhttps://on.cypress.io/request\n    at https://serverest.dev/__cypress/runner/cypress_runner.js:165434:80\n    at tryCatcher (https://serverest.dev/__cypress/runner/cypress_runner.js:13022:23)\n    at Promise._settlePromiseFromHandler (https://serverest.dev/__cypress/runner/cypress_runner.js:10957:31)\n    at Promise._settlePromise (https://serverest.dev/__cypress/runner/cypress_runner.js:11014:18)\n    at Promise._settlePromise0 (https://serverest.dev/__cypress/runner/cypress_runner.js:11059:10)\n    at Promise._settlePromises (https://serverest.dev/__cypress/runner/cypress_runner.js:11139:18)\n    at _drainQueueStep (https://serverest.dev/__cypress/runner/cypress_runner.js:7729:12)\n    at _drainQueue (https://serverest.dev/__cypress/runner/cypress_runner.js:7722:9)\n    at Async.../../node_modules/bluebird/js/release/async.js.Async._drainQueues (https://serverest.dev/__cypress/runner/cypress_runner.js:7738:5)\n    at Async.drainQueues (https://serverest.dev/__cypress/runner/cypress_runner.js:7608:14)\nFrom Your Spec Code:\n    at Context.eval (https://serverest.dev/__cypress/tests?p=cypress\\support\\index.js:606:6)",
+                "diff": null
+              },
+              "uuid": "cc380111-e83f-48de-b994-8c3a45c1c572",
+              "parentUUID": "c6e66437-a585-4feb-a2ad-7903b38c28b8",
+              "isHook": false,
+              "skipped": false
+            },
+            {
+              "title": "Não deve cadastrar usuário sem senha",
+              "fullTitle": "CT-RU 001 - INSERÇÃO DE DADOS EM /USUÁRIOS Não deve cadastrar usuário sem senha",
+              "timedOut": null,
+              "duration": 445,
+              "state": "failed",
+              "speed": null,
+              "pass": false,
+              "fail": true,
+              "pending": false,
+              "context": null,
+              "code": "delete newUser.password;\ncy.postUserCodeTrue(newUser);",
+              "err": {
+                "message": "CypressError: `cy.request()` failed on:\n\nhttps://serverest.dev/usuarios/\n\nThe response we received from your web server was:\n\n  > 400: Bad Request\n\nThis was considered a failure because the status code was not `2xx` or `3xx`.\n\nIf you do not want status codes to cause failures pass the option: `failOnStatusCode: false`\n\n-----------------------------------------------------------\n\nThe request we sent was:\n\nMethod: POST\nURL: https://serverest.dev/usuarios/\nHeaders: {\n  \"Connection\": \"keep-alive\",\n  \"user-agent\": \"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Cypress/9.7.0 Chrome/100.0.4896.75 Electron/18.0.4 Safari/537.36\",\n  \"accept\": \"*/*\",\n  \"accept-encoding\": \"gzip, deflate\",\n  \"content-type\": \"application/json\",\n  \"content-length\": 24\n}\nBody: {\"administrador\":\"true\"}\n\n-----------------------------------------------------------\n\nThe response we got was:\n\nStatus: 400 - Bad Request\nHeaders: {\n  \"access-control-allow-origin\": \"*\",\n  \"x-dns-prefetch-control\": \"off\",\n  \"x-frame-options\": \"SAMEORIGIN\",\n  \"strict-transport-security\": \"max-age=15552000; includeSubDomains\",\n  \"x-download-options\": \"noopen\",\n  \"x-content-type-options\": \"nosniff\",\n  \"x-xss-protection\": \"1; mode=block\",\n  \"x-moesif-transaction-id\": \"a271aa95-a9a1-4174-9473-56a323ad14e7\",\n  \"content-type\": \"application/json; charset=utf-8\",\n  \"x-cloud-trace-context\": \"0513c46e09daa8f146e4de0f2f4a8bf4\",\n  \"date\": \"Wed, 22 Jun 2022 16:56:43 GMT\",\n  \"server\": \"Google Frontend\",\n  \"content-length\": \"120\"\n}\nBody: {\n  \"nome\": \"nome é obrigatório\",\n  \"email\": \"email é obrigatório\",\n  \"password\": \"password é obrigatório\"\n}\n\n\nhttps://on.cypress.io/request",
+                "estack": "CypressError: `cy.request()` failed on:\n\nhttps://serverest.dev/usuarios/\n\nThe response we received from your web server was:\n\n  > 400: Bad Request\n\nThis was considered a failure because the status code was not `2xx` or `3xx`.\n\nIf you do not want status codes to cause failures pass the option: `failOnStatusCode: false`\n\n-----------------------------------------------------------\n\nThe request we sent was:\n\nMethod: POST\nURL: https://serverest.dev/usuarios/\nHeaders: {\n  \"Connection\": \"keep-alive\",\n  \"user-agent\": \"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Cypress/9.7.0 Chrome/100.0.4896.75 Electron/18.0.4 Safari/537.36\",\n  \"accept\": \"*/*\",\n  \"accept-encoding\": \"gzip, deflate\",\n  \"content-type\": \"application/json\",\n  \"content-length\": 24\n}\nBody: {\"administrador\":\"true\"}\n\n-----------------------------------------------------------\n\nThe response we got was:\n\nStatus: 400 - Bad Request\nHeaders: {\n  \"access-control-allow-origin\": \"*\",\n  \"x-dns-prefetch-control\": \"off\",\n  \"x-frame-options\": \"SAMEORIGIN\",\n  \"strict-transport-security\": \"max-age=15552000; includeSubDomains\",\n  \"x-download-options\": \"noopen\",\n  \"x-content-type-options\": \"nosniff\",\n  \"x-xss-protection\": \"1; mode=block\",\n  \"x-moesif-transaction-id\": \"a271aa95-a9a1-4174-9473-56a323ad14e7\",\n  \"content-type\": \"application/json; charset=utf-8\",\n  \"x-cloud-trace-context\": \"0513c46e09daa8f146e4de0f2f4a8bf4\",\n  \"date\": \"Wed, 22 Jun 2022 16:56:43 GMT\",\n  \"server\": \"Google Frontend\",\n  \"content-length\": \"120\"\n}\nBody: {\n  \"nome\": \"nome é obrigatório\",\n  \"email\": \"email é obrigatório\",\n  \"password\": \"password é obrigatório\"\n}\n\n\nhttps://on.cypress.io/request\n    at https://serverest.dev/__cypress/runner/cypress_runner.js:165434:80\n    at tryCatcher (https://serverest.dev/__cypress/runner/cypress_runner.js:13022:23)\n    at Promise._settlePromiseFromHandler (https://serverest.dev/__cypress/runner/cypress_runner.js:10957:31)\n    at Promise._settlePromise (https://serverest.dev/__cypress/runner/cypress_runner.js:11014:18)\n    at Promise._settlePromise0 (https://serverest.dev/__cypress/runner/cypress_runner.js:11059:10)\n    at Promise._settlePromises (https://serverest.dev/__cypress/runner/cypress_runner.js:11139:18)\n    at _drainQueueStep (https://serverest.dev/__cypress/runner/cypress_runner.js:7729:12)\n    at _drainQueue (https://serverest.dev/__cypress/runner/cypress_runner.js:7722:9)\n    at Async.../../node_modules/bluebird/js/release/async.js.Async._drainQueues (https://serverest.dev/__cypress/runner/cypress_runner.js:7738:5)\n    at Async.drainQueues (https://serverest.dev/__cypress/runner/cypress_runner.js:7608:14)\nFrom Your Spec Code:\n    at Context.eval (https://serverest.dev/__cypress/tests?p=cypress\\support\\index.js:606:6)",
+                "diff": null
+              },
+              "uuid": "ab08af6d-c01c-4543-bfb5-4e3cb68e3e82",
+              "parentUUID": "c6e66437-a585-4feb-a2ad-7903b38c28b8",
+              "isHook": false,
+              "skipped": false
+            },
+            {
+              "title": "Não deve cadastrar usuário sem informar administrador",
+              "fullTitle": "CT-RU 001 - INSERÇÃO DE DADOS EM /USUÁRIOS Não deve cadastrar usuário sem informar administrador",
+              "timedOut": null,
+              "duration": 439,
+              "state": "failed",
+              "speed": null,
+              "pass": false,
+              "fail": true,
+              "pending": false,
+              "context": null,
+              "code": "delete newUser.administrador;\ncy.postUserCodeTrue(newUser);",
+              "err": {
+                "message": "CypressError: `cy.request()` failed on:\n\nhttps://serverest.dev/usuarios/\n\nThe response we received from your web server was:\n\n  > 400: Bad Request\n\nThis was considered a failure because the status code was not `2xx` or `3xx`.\n\nIf you do not want status codes to cause failures pass the option: `failOnStatusCode: false`\n\n-----------------------------------------------------------\n\nThe request we sent was:\n\nMethod: POST\nURL: https://serverest.dev/usuarios/\nHeaders: {\n  \"Connection\": \"keep-alive\",\n  \"user-agent\": \"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Cypress/9.7.0 Chrome/100.0.4896.75 Electron/18.0.4 Safari/537.36\",\n  \"accept\": \"*/*\",\n  \"accept-encoding\": \"gzip, deflate\",\n  \"content-type\": \"application/json\",\n  \"content-length\": 2\n}\nBody: {}\n\n-----------------------------------------------------------\n\nThe response we got was:\n\nStatus: 400 - Bad Request\nHeaders: {\n  \"access-control-allow-origin\": \"*\",\n  \"x-dns-prefetch-control\": \"off\",\n  \"x-frame-options\": \"SAMEORIGIN\",\n  \"strict-transport-security\": \"max-age=15552000; includeSubDomains\",\n  \"x-download-options\": \"noopen\",\n  \"x-content-type-options\": \"nosniff\",\n  \"x-xss-protection\": \"1; mode=block\",\n  \"x-moesif-transaction-id\": \"6b2a0f11-541e-4d43-9311-8016ed77a6d5\",\n  \"content-type\": \"application/json; charset=utf-8\",\n  \"x-cloud-trace-context\": \"b73eca14d4a029e983ee1ed1602224f2\",\n  \"date\": \"Wed, 22 Jun 2022 16:56:43 GMT\",\n  \"server\": \"Google Frontend\",\n  \"content-length\": \"174\"\n}\nBody: {\n  \"nome\": \"nome é obrigatório\",\n  \"email\": \"email é obrigatório\",\n  \"password\": \"password é obrigatório\",\n  \"administrador\": \"administrador é obrigatório\"\n}\n\n\nhttps://on.cypress.io/request",
+                "estack": "CypressError: `cy.request()` failed on:\n\nhttps://serverest.dev/usuarios/\n\nThe response we received from your web server was:\n\n  > 400: Bad Request\n\nThis was considered a failure because the status code was not `2xx` or `3xx`.\n\nIf you do not want status codes to cause failures pass the option: `failOnStatusCode: false`\n\n-----------------------------------------------------------\n\nThe request we sent was:\n\nMethod: POST\nURL: https://serverest.dev/usuarios/\nHeaders: {\n  \"Connection\": \"keep-alive\",\n  \"user-agent\": \"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Cypress/9.7.0 Chrome/100.0.4896.75 Electron/18.0.4 Safari/537.36\",\n  \"accept\": \"*/*\",\n  \"accept-encoding\": \"gzip, deflate\",\n  \"content-type\": \"application/json\",\n  \"content-length\": 2\n}\nBody: {}\n\n-----------------------------------------------------------\n\nThe response we got was:\n\nStatus: 400 - Bad Request\nHeaders: {\n  \"access-control-allow-origin\": \"*\",\n  \"x-dns-prefetch-control\": \"off\",\n  \"x-frame-options\": \"SAMEORIGIN\",\n  \"strict-transport-security\": \"max-age=15552000; includeSubDomains\",\n  \"x-download-options\": \"noopen\",\n  \"x-content-type-options\": \"nosniff\",\n  \"x-xss-protection\": \"1; mode=block\",\n  \"x-moesif-transaction-id\": \"6b2a0f11-541e-4d43-9311-8016ed77a6d5\",\n  \"content-type\": \"application/json; charset=utf-8\",\n  \"x-cloud-trace-context\": \"b73eca14d4a029e983ee1ed1602224f2\",\n  \"date\": \"Wed, 22 Jun 2022 16:56:43 GMT\",\n  \"server\": \"Google Frontend\",\n  \"content-length\": \"174\"\n}\nBody: {\n  \"nome\": \"nome é obrigatório\",\n  \"email\": \"email é obrigatório\",\n  \"password\": \"password é obrigatório\",\n  \"administrador\": \"administrador é obrigatório\"\n}\n\n\nhttps://on.cypress.io/request\n    at https://serverest.dev/__cypress/runner/cypress_runner.js:165434:80\n    at tryCatcher (https://serverest.dev/__cypress/runner/cypress_runner.js:13022:23)\n    at Promise._settlePromiseFromHandler (https://serverest.dev/__cypress/runner/cypress_runner.js:10957:31)\n    at Promise._settlePromise (https://serverest.dev/__cypress/runner/cypress_runner.js:11014:18)\n    at Promise._settlePromise0 (https://serverest.dev/__cypress/runner/cypress_runner.js:11059:10)\n    at Promise._settlePromises (https://serverest.dev/__cypress/runner/cypress_runner.js:11139:18)\n    at _drainQueueStep (https://serverest.dev/__cypress/runner/cypress_runner.js:7729:12)\n    at _drainQueue (https://serverest.dev/__cypress/runner/cypress_runner.js:7722:9)\n    at Async.../../node_modules/bluebird/js/release/async.js.Async._drainQueues (https://serverest.dev/__cypress/runner/cypress_runner.js:7738:5)\n    at Async.drainQueues (https://serverest.dev/__cypress/runner/cypress_runner.js:7608:14)\nFrom Your Spec Code:\n    at Context.eval (https://serverest.dev/__cypress/tests?p=cypress\\support\\index.js:606:6)",
+                "diff": null
+              },
+              "uuid": "a9841f29-2bb0-43a7-9225-f4384378011f",
+              "parentUUID": "c6e66437-a585-4feb-a2ad-7903b38c28b8",
+              "isHook": false,
+              "skipped": false
+            },
+            {
+              "title": "Não deve cadastrar usuário sem nenhuma informação passada",
+              "fullTitle": "CT-RU 001 - INSERÇÃO DE DADOS EM /USUÁRIOS Não deve cadastrar usuário sem nenhuma informação passada",
+              "timedOut": null,
+              "duration": 425,
+              "state": "failed",
+              "speed": null,
+              "pass": false,
+              "fail": true,
+              "pending": false,
+              "context": null,
+              "code": "newUser = {};\ncy.postUserCodeTrue(newUser);",
+              "err": {
+                "message": "CypressError: `cy.request()` failed on:\n\nhttps://serverest.dev/usuarios/\n\nThe response we received from your web server was:\n\n  > 400: Bad Request\n\nThis was considered a failure because the status code was not `2xx` or `3xx`.\n\nIf you do not want status codes to cause failures pass the option: `failOnStatusCode: false`\n\n-----------------------------------------------------------\n\nThe request we sent was:\n\nMethod: POST\nURL: https://serverest.dev/usuarios/\nHeaders: {\n  \"Connection\": \"keep-alive\",\n  \"user-agent\": \"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Cypress/9.7.0 Chrome/100.0.4896.75 Electron/18.0.4 Safari/537.36\",\n  \"accept\": \"*/*\",\n  \"accept-encoding\": \"gzip, deflate\",\n  \"content-type\": \"application/json\",\n  \"content-length\": 2\n}\nBody: {}\n\n-----------------------------------------------------------\n\nThe response we got was:\n\nStatus: 400 - Bad Request\nHeaders: {\n  \"access-control-allow-origin\": \"*\",\n  \"x-dns-prefetch-control\": \"off\",\n  \"x-frame-options\": \"SAMEORIGIN\",\n  \"strict-transport-security\": \"max-age=15552000; includeSubDomains\",\n  \"x-download-options\": \"noopen\",\n  \"x-content-type-options\": \"nosniff\",\n  \"x-xss-protection\": \"1; mode=block\",\n  \"x-moesif-transaction-id\": \"d1753fa4-ffcf-430f-99d2-792a866072ab\",\n  \"content-type\": \"application/json; charset=utf-8\",\n  \"x-cloud-trace-context\": \"89fbda8bb8be242876d2095ac410e209\",\n  \"date\": \"Wed, 22 Jun 2022 16:56:44 GMT\",\n  \"server\": \"Google Frontend\",\n  \"content-length\": \"174\"\n}\nBody: {\n  \"nome\": \"nome é obrigatório\",\n  \"email\": \"email é obrigatório\",\n  \"password\": \"password é obrigatório\",\n  \"administrador\": \"administrador é obrigatório\"\n}\n\n\nhttps://on.cypress.io/request",
+                "estack": "CypressError: `cy.request()` failed on:\n\nhttps://serverest.dev/usuarios/\n\nThe response we received from your web server was:\n\n  > 400: Bad Request\n\nThis was considered a failure because the status code was not `2xx` or `3xx`.\n\nIf you do not want status codes to cause failures pass the option: `failOnStatusCode: false`\n\n-----------------------------------------------------------\n\nThe request we sent was:\n\nMethod: POST\nURL: https://serverest.dev/usuarios/\nHeaders: {\n  \"Connection\": \"keep-alive\",\n  \"user-agent\": \"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Cypress/9.7.0 Chrome/100.0.4896.75 Electron/18.0.4 Safari/537.36\",\n  \"accept\": \"*/*\",\n  \"accept-encoding\": \"gzip, deflate\",\n  \"content-type\": \"application/json\",\n  \"content-length\": 2\n}\nBody: {}\n\n-----------------------------------------------------------\n\nThe response we got was:\n\nStatus: 400 - Bad Request\nHeaders: {\n  \"access-control-allow-origin\": \"*\",\n  \"x-dns-prefetch-control\": \"off\",\n  \"x-frame-options\": \"SAMEORIGIN\",\n  \"strict-transport-security\": \"max-age=15552000; includeSubDomains\",\n  \"x-download-options\": \"noopen\",\n  \"x-content-type-options\": \"nosniff\",\n  \"x-xss-protection\": \"1; mode=block\",\n  \"x-moesif-transaction-id\": \"d1753fa4-ffcf-430f-99d2-792a866072ab\",\n  \"content-type\": \"application/json; charset=utf-8\",\n  \"x-cloud-trace-context\": \"89fbda8bb8be242876d2095ac410e209\",\n  \"date\": \"Wed, 22 Jun 2022 16:56:44 GMT\",\n  \"server\": \"Google Frontend\",\n  \"content-length\": \"174\"\n}\nBody: {\n  \"nome\": \"nome é obrigatório\",\n  \"email\": \"email é obrigatório\",\n  \"password\": \"password é obrigatório\",\n  \"administrador\": \"administrador é obrigatório\"\n}\n\n\nhttps://on.cypress.io/request\n    at https://serverest.dev/__cypress/runner/cypress_runner.js:165434:80\n    at tryCatcher (https://serverest.dev/__cypress/runner/cypress_runner.js:13022:23)\n    at Promise._settlePromiseFromHandler (https://serverest.dev/__cypress/runner/cypress_runner.js:10957:31)\n    at Promise._settlePromise (https://serverest.dev/__cypress/runner/cypress_runner.js:11014:18)\n    at Promise._settlePromise0 (https://serverest.dev/__cypress/runner/cypress_runner.js:11059:10)\n    at Promise._settlePromises (https://serverest.dev/__cypress/runner/cypress_runner.js:11139:18)\n    at _drainQueueStep (https://serverest.dev/__cypress/runner/cypress_runner.js:7729:12)\n    at _drainQueue (https://serverest.dev/__cypress/runner/cypress_runner.js:7722:9)\n    at Async.../../node_modules/bluebird/js/release/async.js.Async._drainQueues (https://serverest.dev/__cypress/runner/cypress_runner.js:7738:5)\n    at Async.drainQueues (https://serverest.dev/__cypress/runner/cypress_runner.js:7608:14)\nFrom Your Spec Code:\n    at Context.eval (https://serverest.dev/__cypress/tests?p=cypress\\support\\index.js:606:6)",
+                "diff": null
+              },
+              "uuid": "2f5b5ccd-8775-41e7-9b1b-d9d3ae4e3766",
+              "parentUUID": "c6e66437-a585-4feb-a2ad-7903b38c28b8",
+              "isHook": false,
+              "skipped": false
+            }
+          ],
+          "suites": [],
+          "passes": [
+            "d18f21f3-606b-4226-a229-8c9c54ba1f9c",
+            "a4dec6b3-8d35-4900-abd0-c8ef3c95d877"
+          ],
+          "failures": [
+            "8e56f52b-517d-4f05-8c46-dc10b209336f",
+            "cc380111-e83f-48de-b994-8c3a45c1c572",
+            "ab08af6d-c01c-4543-bfb5-4e3cb68e3e82",
+            "a9841f29-2bb0-43a7-9225-f4384378011f",
+            "2f5b5ccd-8775-41e7-9b1b-d9d3ae4e3766"
+          ],
+          "pending": [],
+          "skipped": [],
+          "duration": 3832,
+          "root": false,
+          "rootEmpty": false,
+          "_timeout": 2000
+        }
+      ],
+      "passes": [],
+      "failures": [],
+      "pending": [],
+      "skipped": [],
+      "duration": 0,
+      "root": true,
+      "rootEmpty": true,
+      "_timeout": 2000
+    }
+  ],
+  "meta": {
+    "mocha": {
+      "version": "7.0.1"
+    },
+    "mochawesome": {
+      "options": {
+        "quiet": false,
+        "reportFilename": "mochawesome",
+        "saveHtml": false,
+        "saveJson": true,
+        "consoleReporter": "spec",
+        "useInlineDiffs": false,
+        "code": true
+      },
+      "version": "7.1.3"
+    },
+    "marge": {
+      "options": {
+        "id": "default",
+        "reportDir": "cypress/reports/mocha",
+        "quite": true,
+        "overwrite": false,
+        "html": false,
+        "json": true
+      },
+      "version": "6.2.0"
+    }
+  }
+}

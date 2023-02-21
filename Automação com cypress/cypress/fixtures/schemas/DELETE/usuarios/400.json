@@ -1,0 +1,32 @@
+{
+
+    "type": "object",
+    "default": {},
+    "title": "Root Schema",
+    "required": [
+        "message",
+        "idCarrinho"
+    ],
+    "properties": {
+        "message": {
+            "type": "string",
+            "default": "",
+            "title": "The message Schema",
+            "examples": [
+                "Não é permitido excluir usuário com carrinho cadastrado"
+            ]
+        },
+        "idCarrinho": {
+            "type": "string",
+            "default": "",
+            "title": "The idCarrinho Schema",
+            "examples": [
+                "qbMqntef4iTOwWfg"
+            ]
+        }
+    },
+    "examples": [{
+        "message": "Não é permitido excluir usuário com carrinho cadastrado",
+        "idCarrinho": "qbMqntef4iTOwWfg"
+    }]
+}

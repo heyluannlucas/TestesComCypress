@@ -1,0 +1,221 @@
+{
+  "stats": {
+    "suites": 1,
+    "tests": 7,
+    "passes": 7,
+    "pending": 0,
+    "failures": 0,
+    "start": "2022-06-21T01:55:37.507Z",
+    "end": "2022-06-21T01:55:40.184Z",
+    "duration": 2677,
+    "testsRegistered": 7,
+    "passPercent": 100,
+    "pendingPercent": 0,
+    "other": 0,
+    "hasOther": false,
+    "skipped": 0,
+    "hasSkipped": false
+  },
+  "results": [
+    {
+      "uuid": "d236e4cf-c8c5-484a-bb86-6053b1cc3e2b",
+      "title": "",
+      "fullFile": "cypress/integration/1.usuarios/1.1-postUsuarios.spec.js",
+      "file": "cypress/integration/1.usuarios/1.1-postUsuarios.spec.js",
+      "beforeHooks": [],
+      "afterHooks": [],
+      "tests": [],
+      "suites": [
+        {
+          "uuid": "6c687155-f98e-4006-a7df-af4c5e7aff61",
+          "title": "Testes para /usuarios - POST",
+          "fullFile": "",
+          "file": "",
+          "beforeHooks": [],
+          "afterHooks": [],
+          "tests": [
+            {
+              "title": "Cadastrar um novo usuário com sucesso",
+              "fullTitle": "Testes para /usuarios - POST Cadastrar um novo usuário com sucesso",
+              "timedOut": null,
+              "duration": 834,
+              "state": "passed",
+              "speed": "fast",
+              "pass": true,
+              "fail": false,
+              "pending": false,
+              "context": null,
+              "code": "cy.postUser(newUser).as('id').should(res => {\n  _resultsValidation.default.successful(res);\n  cy.contractValidation(res, 'POST/usuarios', 201);\n});\ncy.get('@userId').then(id => {\n  cy.deleteUser(id.body._id);\n});",
+              "err": {},
+              "uuid": "e82798ca-b0b4-44eb-bf3d-4605c580c295",
+              "parentUUID": "6c687155-f98e-4006-a7df-af4c5e7aff61",
+              "isHook": false,
+              "skipped": false
+            },
+            {
+              "title": "Não deve cadastrar com email já existente",
+              "fullTitle": "Testes para /usuarios - POST Não deve cadastrar com email já existente",
+              "timedOut": null,
+              "duration": 649,
+              "state": "passed",
+              "speed": "fast",
+              "pass": true,
+              "fail": false,
+              "pending": false,
+              "context": null,
+              "code": "cy.postUser(newUser).as('beforePost');\ncy.postUser(newUser).should(res => {\n  _resultsValidation.default.unsuccessful(res);\n  cy.contractValidation(res, 'POST/usuarios', 400);\n});\ncy.get('@beforePost').then(id => {\n  cy.deleteUser(id.body._id);\n});",
+              "err": {},
+              "uuid": "2b18e310-7f3b-462c-a43e-4078ee7bb524",
+              "parentUUID": "6c687155-f98e-4006-a7df-af4c5e7aff61",
+              "isHook": false,
+              "skipped": false
+            },
+            {
+              "title": "Não deve cadastrar usuário sem email",
+              "fullTitle": "Testes para /usuarios - POST Não deve cadastrar usuário sem email",
+              "timedOut": null,
+              "duration": 235,
+              "state": "passed",
+              "speed": "fast",
+              "pass": true,
+              "fail": false,
+              "pending": false,
+              "context": null,
+              "code": "delete newUser.email;\ncy.postUser(newUser).should(res => {\n  _resultsValidation.default.obligatoryEmail(res);\n  cy.contractValidation(res, 'POST/usuarios', 400);\n});",
+              "err": {},
+              "uuid": "23f78f53-614c-4941-aa1c-a0fd22227461",
+              "parentUUID": "6c687155-f98e-4006-a7df-af4c5e7aff61",
+              "isHook": false,
+              "skipped": false
+            },
+            {
+              "title": "Não deve cadastrar usuário sem nome",
+              "fullTitle": "Testes para /usuarios - POST Não deve cadastrar usuário sem nome",
+              "timedOut": null,
+              "duration": 226,
+              "state": "passed",
+              "speed": "fast",
+              "pass": true,
+              "fail": false,
+              "pending": false,
+              "context": null,
+              "code": "delete newUser.nome;\ncy.postUser(newUser).should(res => {\n  _resultsValidation.default.obligatoryName(res);\n  cy.contractValidation(res, 'POST/usuarios', 400);\n});",
+              "err": {},
+              "uuid": "ae4a5c2f-ec7d-4ff0-b160-cf39cfdf1749",
+              "parentUUID": "6c687155-f98e-4006-a7df-af4c5e7aff61",
+              "isHook": false,
+              "skipped": false
+            },
+            {
+              "title": "Não deve cadastrar usuário sem senha",
+              "fullTitle": "Testes para /usuarios - POST Não deve cadastrar usuário sem senha",
+              "timedOut": null,
+              "duration": 227,
+              "state": "passed",
+              "speed": "fast",
+              "pass": true,
+              "fail": false,
+              "pending": false,
+              "context": null,
+              "code": "delete newUser.password;\ncy.postUser(newUser).should(res => {\n  _resultsValidation.default.obligatoryPassword(res);\n  cy.contractValidation(res, 'POST/usuarios', 400);\n});",
+              "err": {},
+              "uuid": "f541f3a8-6d07-4915-84cf-58a8267b4901",
+              "parentUUID": "6c687155-f98e-4006-a7df-af4c5e7aff61",
+              "isHook": false,
+              "skipped": false
+            },
+            {
+              "title": "Não deve cadastrar usuário sem informar administrador",
+              "fullTitle": "Testes para /usuarios - POST Não deve cadastrar usuário sem informar administrador",
+              "timedOut": null,
+              "duration": 234,
+              "state": "passed",
+              "speed": "fast",
+              "pass": true,
+              "fail": false,
+              "pending": false,
+              "context": null,
+              "code": "delete newUser.administrador;\ncy.postUser(newUser).should(res => {\n  _resultsValidation.default.obligatoryAdm(res);\n  cy.contractValidation(res, 'POST/usuarios', 400);\n});",
+              "err": {},
+              "uuid": "9ce704bf-8287-43dd-b6e3-43060eeba27d",
+              "parentUUID": "6c687155-f98e-4006-a7df-af4c5e7aff61",
+              "isHook": false,
+              "skipped": false
+            },
+            {
+              "title": "Não deve cadastrar usuário sem nenhuma informação passada",
+              "fullTitle": "Testes para /usuarios - POST Não deve cadastrar usuário sem nenhuma informação passada",
+              "timedOut": null,
+              "duration": 232,
+              "state": "passed",
+              "speed": "fast",
+              "pass": true,
+              "fail": false,
+              "pending": false,
+              "context": null,
+              "code": "newUser = {};\ncy.postUser(newUser).should(res => {\n  _resultsValidation.default.obligatoryInfos(res);\n  cy.contractValidation(res, 'POST/usuarios', 400);\n});",
+              "err": {},
+              "uuid": "d14c29a1-3c11-4d0c-b490-402acd353db8",
+              "parentUUID": "6c687155-f98e-4006-a7df-af4c5e7aff61",
+              "isHook": false,
+              "skipped": false
+            }
+          ],
+          "suites": [],
+          "passes": [
+            "e82798ca-b0b4-44eb-bf3d-4605c580c295",
+            "2b18e310-7f3b-462c-a43e-4078ee7bb524",
+            "23f78f53-614c-4941-aa1c-a0fd22227461",
+            "ae4a5c2f-ec7d-4ff0-b160-cf39cfdf1749",
+            "f541f3a8-6d07-4915-84cf-58a8267b4901",
+            "9ce704bf-8287-43dd-b6e3-43060eeba27d",
+            "d14c29a1-3c11-4d0c-b490-402acd353db8"
+          ],
+          "failures": [],
+          "pending": [],
+          "skipped": [],
+          "duration": 2637,
+          "root": false,
+          "rootEmpty": false,
+          "_timeout": 2000
+        }
+      ],
+      "passes": [],
+      "failures": [],
+      "pending": [],
+      "skipped": [],
+      "duration": 0,
+      "root": true,
+      "rootEmpty": true,
+      "_timeout": 2000
+    }
+  ],
+  "meta": {
+    "mocha": {
+      "version": "7.0.1"
+    },
+    "mochawesome": {
+      "options": {
+        "quiet": false,
+        "reportFilename": "mochawesome",
+        "saveHtml": false,
+        "saveJson": true,
+        "consoleReporter": "spec",
+        "useInlineDiffs": false,
+        "code": true
+      },
+      "version": "7.1.3"
+    },
+    "marge": {
+      "options": {
+        "id": "default",
+        "reportDir": "cypress/reports/mocha",
+        "quite": true,
+        "overwrite": false,
+        "html": false,
+        "json": true
+      },
+      "version": "6.2.0"
+    }
+  }
+}

@@ -1,0 +1,145 @@
+{
+  "stats": {
+    "suites": 1,
+    "tests": 3,
+    "passes": 3,
+    "pending": 0,
+    "failures": 0,
+    "start": "2022-06-22T10:08:45.158Z",
+    "end": "2022-06-22T10:08:48.157Z",
+    "duration": 2999,
+    "testsRegistered": 3,
+    "passPercent": 100,
+    "pendingPercent": 0,
+    "other": 0,
+    "hasOther": false,
+    "skipped": 0,
+    "hasSkipped": false
+  },
+  "results": [
+    {
+      "uuid": "5147c776-f80d-4617-937d-e79fb1c52cfe",
+      "title": "",
+      "fullFile": "cypress/integration/4.carrinhos/4.1-postCarrinhos.spec.js",
+      "file": "cypress/integration/4.carrinhos/4.1-postCarrinhos.spec.js",
+      "beforeHooks": [],
+      "afterHooks": [],
+      "tests": [],
+      "suites": [
+        {
+          "uuid": "960dbfd9-ca57-4bb8-b746-a4206b2d066b",
+          "title": "CT-RC 009 - INSERÇÃO DE DADOS EM /CARRINHOS",
+          "fullFile": "",
+          "file": "",
+          "beforeHooks": [],
+          "afterHooks": [],
+          "tests": [
+            {
+              "title": "Cadastrar um carrinho",
+              "fullTitle": "CT-RC 009 - INSERÇÃO DE DADOS EM /CARRINHOS Cadastrar um carrinho",
+              "timedOut": null,
+              "duration": 1422,
+              "state": "passed",
+              "speed": "fast",
+              "pass": true,
+              "fail": false,
+              "pending": false,
+              "context": null,
+              "code": "cy.postCart(token, productId).should(res => {\n  _responsesValidation.default.successful(res);\n  cy.contractValidation(res, 'POST/carrinhos', 200);\n});",
+              "err": {},
+              "uuid": "a7fba5b5-ee8e-453e-b0cb-e659c8a412db",
+              "parentUUID": "960dbfd9-ca57-4bb8-b746-a4206b2d066b",
+              "isHook": false,
+              "skipped": false
+            },
+            {
+              "title": "Não deve cadastrar mais de um carrinho por usuário",
+              "fullTitle": "CT-RC 009 - INSERÇÃO DE DADOS EM /CARRINHOS Não deve cadastrar mais de um carrinho por usuário",
+              "timedOut": null,
+              "duration": 245,
+              "state": "passed",
+              "speed": "fast",
+              "pass": true,
+              "fail": false,
+              "pending": false,
+              "context": null,
+              "code": "cy.postCart(token, productId).should(res => {\n  _responsesValidation.default.justOneCart(res);\n  cy.contractValidation(res, 'POST/carrinhos', 400);\n});",
+              "err": {},
+              "uuid": "ff3c8714-65ee-4cc2-af66-e48871acac60",
+              "parentUUID": "960dbfd9-ca57-4bb8-b746-a4206b2d066b",
+              "isHook": false,
+              "skipped": false
+            },
+            {
+              "title": "Não deve cadastrar carrinho com id de produto inválido",
+              "fullTitle": "CT-RC 009 - INSERÇÃO DE DADOS EM /CARRINHOS Não deve cadastrar carrinho com id de produto inválido",
+              "timedOut": null,
+              "duration": 465,
+              "state": "passed",
+              "speed": "fast",
+              "pass": true,
+              "fail": false,
+              "pending": false,
+              "context": null,
+              "code": "cy.buyItOrNot(token, 'concluir-compra');\ncy.postCart(token, _fakerBr.default.random.uuid()).should(res => {\n  _responsesValidation.default.notFound(res);\n  cy.contractValidation(res, 'POST/carrinhos', 400);\n});",
+              "err": {},
+              "uuid": "62daae0d-21ca-4525-9713-2d80014ea73e",
+              "parentUUID": "960dbfd9-ca57-4bb8-b746-a4206b2d066b",
+              "isHook": false,
+              "skipped": false
+            }
+          ],
+          "suites": [],
+          "passes": [
+            "a7fba5b5-ee8e-453e-b0cb-e659c8a412db",
+            "ff3c8714-65ee-4cc2-af66-e48871acac60",
+            "62daae0d-21ca-4525-9713-2d80014ea73e"
+          ],
+          "failures": [],
+          "pending": [],
+          "skipped": [],
+          "duration": 2132,
+          "root": false,
+          "rootEmpty": false,
+          "_timeout": 2000
+        }
+      ],
+      "passes": [],
+      "failures": [],
+      "pending": [],
+      "skipped": [],
+      "duration": 0,
+      "root": true,
+      "rootEmpty": true,
+      "_timeout": 2000
+    }
+  ],
+  "meta": {
+    "mocha": {
+      "version": "7.0.1"
+    },
+    "mochawesome": {
+      "options": {
+        "quiet": false,
+        "reportFilename": "mochawesome",
+        "saveHtml": false,
+        "saveJson": true,
+        "consoleReporter": "spec",
+        "useInlineDiffs": false,
+        "code": true
+      },
+      "version": "7.1.3"
+    },
+    "marge": {
+      "options": {
+        "id": "default",
+        "reportDir": "cypress/reports/mocha",
+        "quite": true,
+        "overwrite": false,
+        "html": false,
+        "json": true
+      },
+      "version": "6.2.0"
+    }
+  }
+}

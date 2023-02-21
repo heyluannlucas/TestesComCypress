@@ -1,0 +1,145 @@
+{
+  "stats": {
+    "suites": 1,
+    "tests": 3,
+    "passes": 3,
+    "pending": 0,
+    "failures": 0,
+    "start": "2022-06-22T16:57:46.558Z",
+    "end": "2022-06-22T16:57:53.073Z",
+    "duration": 6515,
+    "testsRegistered": 3,
+    "passPercent": 100,
+    "pendingPercent": 0,
+    "other": 0,
+    "hasOther": false,
+    "skipped": 0,
+    "hasSkipped": false
+  },
+  "results": [
+    {
+      "uuid": "b7c53a17-11b8-48b1-8674-a80a3cb23057",
+      "title": "",
+      "fullFile": "cypress/integration/4.carrinhos/4.2-deleteCarrinhos.spec.js",
+      "file": "cypress/integration/4.carrinhos/4.2-deleteCarrinhos.spec.js",
+      "beforeHooks": [],
+      "afterHooks": [],
+      "tests": [],
+      "suites": [
+        {
+          "uuid": "e56de86f-27a2-4063-b394-fc72a6c736d2",
+          "title": "CT-RC 010 -  EXCLUSÃO DE DADOS EM /CARRINHOS",
+          "fullFile": "",
+          "file": "",
+          "beforeHooks": [],
+          "afterHooks": [],
+          "tests": [
+            {
+              "title": "Deve concluir a compra e excluir carrinho",
+              "fullTitle": "CT-RC 010 -  EXCLUSÃO DE DADOS EM /CARRINHOS Deve concluir a compra e excluir carrinho",
+              "timedOut": null,
+              "duration": 1578,
+              "state": "passed",
+              "speed": "fast",
+              "pass": true,
+              "fail": false,
+              "pending": false,
+              "context": null,
+              "code": "cy.buyItOrNot(normalToken, 'concluir-compra').should(res => {\n  _responsesValidation.default.deleted(res);\n  cy.contractValidation(res, 'DELETE/carrinhos', 200);\n});",
+              "err": {},
+              "uuid": "5ca5f115-7b67-4c50-bdc3-fb5234d6b9c6",
+              "parentUUID": "e56de86f-27a2-4063-b394-fc72a6c736d2",
+              "isHook": false,
+              "skipped": false
+            },
+            {
+              "title": "Deve excluir carrinho e retornar produtos para estoque",
+              "fullTitle": "CT-RC 010 -  EXCLUSÃO DE DADOS EM /CARRINHOS Deve excluir carrinho e retornar produtos para estoque",
+              "timedOut": null,
+              "duration": 1494,
+              "state": "passed",
+              "speed": "fast",
+              "pass": true,
+              "fail": false,
+              "pending": false,
+              "context": null,
+              "code": "cy.buyItOrNot(normalToken, 'cancelar-compra').should(res => {\n  _responsesValidation.default.deleteAndReturnProducts(res);\n  cy.contractValidation(res, 'DELETE/carrinhos', 200);\n});",
+              "err": {},
+              "uuid": "d9042bb4-60f9-4506-a93a-08a44867e303",
+              "parentUUID": "e56de86f-27a2-4063-b394-fc72a6c736d2",
+              "isHook": false,
+              "skipped": false
+            },
+            {
+              "title": "Não deve deletar carrinho sem token de acesso",
+              "fullTitle": "CT-RC 010 -  EXCLUSÃO DE DADOS EM /CARRINHOS Não deve deletar carrinho sem token de acesso",
+              "timedOut": null,
+              "duration": 1520,
+              "state": "passed",
+              "speed": "fast",
+              "pass": true,
+              "fail": false,
+              "pending": false,
+              "context": null,
+              "code": "cy.buyItOrNot('', 'cancelar-compra').should(res => {\n  _responsesValidation.default.notAccess(res);\n  cy.contractValidation(res, 'DELETE/carrinhos', 401);\n});",
+              "err": {},
+              "uuid": "f4260a87-4ed0-44e3-9764-9d86804db56e",
+              "parentUUID": "e56de86f-27a2-4063-b394-fc72a6c736d2",
+              "isHook": false,
+              "skipped": false
+            }
+          ],
+          "suites": [],
+          "passes": [
+            "5ca5f115-7b67-4c50-bdc3-fb5234d6b9c6",
+            "d9042bb4-60f9-4506-a93a-08a44867e303",
+            "f4260a87-4ed0-44e3-9764-9d86804db56e"
+          ],
+          "failures": [],
+          "pending": [],
+          "skipped": [],
+          "duration": 4592,
+          "root": false,
+          "rootEmpty": false,
+          "_timeout": 2000
+        }
+      ],
+      "passes": [],
+      "failures": [],
+      "pending": [],
+      "skipped": [],
+      "duration": 0,
+      "root": true,
+      "rootEmpty": true,
+      "_timeout": 2000
+    }
+  ],
+  "meta": {
+    "mocha": {
+      "version": "7.0.1"
+    },
+    "mochawesome": {
+      "options": {
+        "quiet": false,
+        "reportFilename": "mochawesome",
+        "saveHtml": false,
+        "saveJson": true,
+        "consoleReporter": "spec",
+        "useInlineDiffs": false,
+        "code": true
+      },
+      "version": "7.1.3"
+    },
+    "marge": {
+      "options": {
+        "id": "default",
+        "reportDir": "cypress/reports/mocha",
+        "quite": true,
+        "overwrite": false,
+        "html": false,
+        "json": true
+      },
+      "version": "6.2.0"
+    }
+  }
+}

@@ -1,0 +1,183 @@
+{
+  "stats": {
+    "suites": 1,
+    "tests": 5,
+    "passes": 5,
+    "pending": 0,
+    "failures": 0,
+    "start": "2022-06-21T23:31:01.479Z",
+    "end": "2022-06-21T23:31:04.794Z",
+    "duration": 3315,
+    "testsRegistered": 5,
+    "passPercent": 100,
+    "pendingPercent": 0,
+    "other": 0,
+    "hasOther": false,
+    "skipped": 0,
+    "hasSkipped": false
+  },
+  "results": [
+    {
+      "uuid": "702bc346-eaed-447d-befa-9a93f94e9456",
+      "title": "",
+      "fullFile": "cypress/integration/2.login/2.1-postLogin.spec.js",
+      "file": "cypress/integration/2.login/2.1-postLogin.spec.js",
+      "beforeHooks": [],
+      "afterHooks": [],
+      "tests": [],
+      "suites": [
+        {
+          "uuid": "923bd4e5-8f5c-45f6-a877-7d1b21f90b48",
+          "title": "CT-RL 005 - INSERÇÃO DE DADOS EM /LOGIN",
+          "fullFile": "",
+          "file": "",
+          "beforeHooks": [],
+          "afterHooks": [],
+          "tests": [
+            {
+              "title": "Deve logar com sucesso",
+              "fullTitle": "CT-RL 005 - INSERÇÃO DE DADOS EM /LOGIN Deve logar com sucesso",
+              "timedOut": null,
+              "duration": 504,
+              "state": "passed",
+              "speed": "fast",
+              "pass": true,
+              "fail": false,
+              "pending": false,
+              "context": null,
+              "code": "cy.login(newUser.email, newUser.password).should(res => {\n  _responsesValidation.default.successfulLogin(res);\n  cy.contractValidation(res, 'POST/login', 200);\n});",
+              "err": {},
+              "uuid": "cd6c1bb9-1463-4f38-b682-a9fa6ca32bc7",
+              "parentUUID": "923bd4e5-8f5c-45f6-a877-7d1b21f90b48",
+              "isHook": false,
+              "skipped": false
+            },
+            {
+              "title": "Não deve logar com senha e/ou email inválido",
+              "fullTitle": "CT-RL 005 - INSERÇÃO DE DADOS EM /LOGIN Não deve logar com senha e/ou email inválido",
+              "timedOut": null,
+              "duration": 441,
+              "state": "passed",
+              "speed": "fast",
+              "pass": true,
+              "fail": false,
+              "pending": false,
+              "context": null,
+              "code": "cy.login(user.incorrect.email, user.incorrect.password).should(res => {\n  _responsesValidation.default.invalidLoginInfos(res);\n  cy.contractValidation(res, 'POST/login', 400);\n});",
+              "err": {},
+              "uuid": "fb108303-4adf-425e-91ea-424341d33c07",
+              "parentUUID": "923bd4e5-8f5c-45f6-a877-7d1b21f90b48",
+              "isHook": false,
+              "skipped": false
+            },
+            {
+              "title": "Não deve logar com email inválido",
+              "fullTitle": "CT-RL 005 - INSERÇÃO DE DADOS EM /LOGIN Não deve logar com email inválido",
+              "timedOut": null,
+              "duration": 434,
+              "state": "passed",
+              "speed": "fast",
+              "pass": true,
+              "fail": false,
+              "pending": false,
+              "context": null,
+              "code": "cy.login(user.invalid.email, newUser.password).should(res => {\n  _responsesValidation.default.invalidEmail(res);\n  cy.contractValidation(res, 'POST/login', 400);\n});",
+              "err": {},
+              "uuid": "1041f417-eeb8-4758-8a06-ae77ae272b15",
+              "parentUUID": "923bd4e5-8f5c-45f6-a877-7d1b21f90b48",
+              "isHook": false,
+              "skipped": false
+            },
+            {
+              "title": "Não deve logar com email em branco",
+              "fullTitle": "CT-RL 005 - INSERÇÃO DE DADOS EM /LOGIN Não deve logar com email em branco",
+              "timedOut": null,
+              "duration": 426,
+              "state": "passed",
+              "speed": "fast",
+              "pass": true,
+              "fail": false,
+              "pending": false,
+              "context": null,
+              "code": "cy.login(user.null.email, newUser.password).should(res => {\n  _responsesValidation.default.nullEmail(res);\n  cy.contractValidation(res, 'POST/login', 400);\n});",
+              "err": {},
+              "uuid": "150f3de6-6346-46fb-9d42-095e10a5fb76",
+              "parentUUID": "923bd4e5-8f5c-45f6-a877-7d1b21f90b48",
+              "isHook": false,
+              "skipped": false
+            },
+            {
+              "title": "Não deve logar com senha em branco",
+              "fullTitle": "CT-RL 005 - INSERÇÃO DE DADOS EM /LOGIN Não deve logar com senha em branco",
+              "timedOut": null,
+              "duration": 427,
+              "state": "passed",
+              "speed": "fast",
+              "pass": true,
+              "fail": false,
+              "pending": false,
+              "context": null,
+              "code": "cy.login(newUser.email, user.null.password).should(res => {\n  _responsesValidation.default.nullPassword(res);\n  cy.contractValidation(res, 'POST/login', 400);\n});",
+              "err": {},
+              "uuid": "3ca7971b-4db2-4bda-8861-d68a24e55903",
+              "parentUUID": "923bd4e5-8f5c-45f6-a877-7d1b21f90b48",
+              "isHook": false,
+              "skipped": false
+            }
+          ],
+          "suites": [],
+          "passes": [
+            "cd6c1bb9-1463-4f38-b682-a9fa6ca32bc7",
+            "fb108303-4adf-425e-91ea-424341d33c07",
+            "1041f417-eeb8-4758-8a06-ae77ae272b15",
+            "150f3de6-6346-46fb-9d42-095e10a5fb76",
+            "3ca7971b-4db2-4bda-8861-d68a24e55903"
+          ],
+          "failures": [],
+          "pending": [],
+          "skipped": [],
+          "duration": 2232,
+          "root": false,
+          "rootEmpty": false,
+          "_timeout": 2000
+        }
+      ],
+      "passes": [],
+      "failures": [],
+      "pending": [],
+      "skipped": [],
+      "duration": 0,
+      "root": true,
+      "rootEmpty": true,
+      "_timeout": 2000
+    }
+  ],
+  "meta": {
+    "mocha": {
+      "version": "7.0.1"
+    },
+    "mochawesome": {
+      "options": {
+        "quiet": false,
+        "reportFilename": "mochawesome",
+        "saveHtml": false,
+        "saveJson": true,
+        "consoleReporter": "spec",
+        "useInlineDiffs": false,
+        "code": true
+      },
+      "version": "7.1.3"
+    },
+    "marge": {
+      "options": {
+        "id": "default",
+        "reportDir": "cypress/reports/mocha",
+        "quite": true,
+        "overwrite": false,
+        "html": false,
+        "json": true
+      },
+      "version": "6.2.0"
+    }
+  }
+}

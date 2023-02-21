@@ -1,0 +1,13 @@
+{
+  "incorrect": {
+    "email": "usuario@incorreto.com",
+    "password": "t3st3"
+  },
+  "null": {
+    "email": "",
+    "password": ""
+  },
+  "invalid": {
+    "email": "usuarioinvalido"
+  }
+}

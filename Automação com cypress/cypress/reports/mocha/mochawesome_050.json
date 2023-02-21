@@ -1,0 +1,183 @@
+{
+  "stats": {
+    "suites": 1,
+    "tests": 5,
+    "passes": 5,
+    "pending": 0,
+    "failures": 0,
+    "start": "2022-06-21T23:42:51.137Z",
+    "end": "2022-06-21T23:42:54.353Z",
+    "duration": 3216,
+    "testsRegistered": 5,
+    "passPercent": 100,
+    "pendingPercent": 0,
+    "other": 0,
+    "hasOther": false,
+    "skipped": 0,
+    "hasSkipped": false
+  },
+  "results": [
+    {
+      "uuid": "90fc6b7f-e8ef-4397-90d9-0bb43c8a9346",
+      "title": "",
+      "fullFile": "cypress/integration/3.produtos/3.1-postProdutos.spec.js",
+      "file": "cypress/integration/3.produtos/3.1-postProdutos.spec.js",
+      "beforeHooks": [],
+      "afterHooks": [],
+      "tests": [],
+      "suites": [
+        {
+          "uuid": "63676914-ba27-4c4c-a04e-d5b0d548af57",
+          "title": "CT-RP 006 - INSERÇÃO DE DADOS EM /PRODUTOS",
+          "fullFile": "",
+          "file": "",
+          "beforeHooks": [],
+          "afterHooks": [],
+          "tests": [
+            {
+              "title": "Deve cadastrar um produto com sucesso",
+              "fullTitle": "CT-RP 006 - INSERÇÃO DE DADOS EM /PRODUTOS Deve cadastrar um produto com sucesso",
+              "timedOut": null,
+              "duration": 1344,
+              "state": "passed",
+              "speed": "fast",
+              "pass": true,
+              "fail": false,
+              "pending": false,
+              "context": null,
+              "code": "cy.postProduct(tokenAdmin, produto).should(res => {\n  _responsesValidation.default.successful(res);\n  cy.contractValidation(res, 'POST/produtos', 201);\n});\ncy.get('@product').then(produto => {\n  cy.deleteProduct(tokenAdmin, produto.body._id);\n});",
+              "err": {},
+              "uuid": "79925051-b594-4bbf-9274-46762963aa30",
+              "parentUUID": "63676914-ba27-4c4c-a04e-d5b0d548af57",
+              "isHook": false,
+              "skipped": false
+            },
+            {
+              "title": "Não deve cadastrar produto com nome existente",
+              "fullTitle": "CT-RP 006 - INSERÇÃO DE DADOS EM /PRODUTOS Não deve cadastrar produto com nome existente",
+              "timedOut": null,
+              "duration": 687,
+              "state": "passed",
+              "speed": "fast",
+              "pass": true,
+              "fail": false,
+              "pending": false,
+              "context": null,
+              "code": "cy.postProduct(tokenAdmin, produto);\ncy.postProduct(tokenAdmin, produto).should(res => {\n  _responsesValidation.default.productAlreadyExist(res);\n  cy.contractValidation(res, 'POST/produtos', 400);\n});\ncy.get('@product').then(produto => {\n  cy.deleteProduct(tokenAdmin, produto.body._id);\n});",
+              "err": {},
+              "uuid": "a7c9948a-620e-4f42-8b78-87bf019cfeab",
+              "parentUUID": "63676914-ba27-4c4c-a04e-d5b0d548af57",
+              "isHook": false,
+              "skipped": false
+            },
+            {
+              "title": "Não deve cadastrar produto com token adm inválido",
+              "fullTitle": "CT-RP 006 - INSERÇÃO DE DADOS EM /PRODUTOS Não deve cadastrar produto com token adm inválido",
+              "timedOut": null,
+              "duration": 254,
+              "state": "passed",
+              "speed": "fast",
+              "pass": true,
+              "fail": false,
+              "pending": false,
+              "context": null,
+              "code": "cy.postProduct(faker.random.uuid, produto).should(res => {\n  _responsesValidation.default.notAccess(res);\n  cy.contractValidation(res, 'POST/produtos', 401);\n});",
+              "err": {},
+              "uuid": "bceb3a85-6b80-4308-a0c3-1cd790e332d4",
+              "parentUUID": "63676914-ba27-4c4c-a04e-d5b0d548af57",
+              "isHook": false,
+              "skipped": false
+            },
+            {
+              "title": "Não deve cadastrar com token adm vazio",
+              "fullTitle": "CT-RP 006 - INSERÇÃO DE DADOS EM /PRODUTOS Não deve cadastrar com token adm vazio",
+              "timedOut": null,
+              "duration": 247,
+              "state": "passed",
+              "speed": "fast",
+              "pass": true,
+              "fail": false,
+              "pending": false,
+              "context": null,
+              "code": "cy.postProduct('', produto).should(res => {\n  _responsesValidation.default.notAccess(res);\n  cy.contractValidation(res, 'POST/produtos', 401);\n});",
+              "err": {},
+              "uuid": "24688601-74c9-43d6-9913-bf8e9283f641",
+              "parentUUID": "63676914-ba27-4c4c-a04e-d5b0d548af57",
+              "isHook": false,
+              "skipped": false
+            },
+            {
+              "title": "Não deve cadastrar produto sem usuário adm",
+              "fullTitle": "CT-RP 006 - INSERÇÃO DE DADOS EM /PRODUTOS Não deve cadastrar produto sem usuário adm",
+              "timedOut": null,
+              "duration": 220,
+              "state": "passed",
+              "speed": "fast",
+              "pass": true,
+              "fail": false,
+              "pending": false,
+              "context": null,
+              "code": "cy.postProduct(token, produto).should(res => {\n  _responsesValidation.default.notAdm(res);\n  cy.contractValidation(res, 'POST/produtos', 403);\n});",
+              "err": {},
+              "uuid": "106d6c9e-9148-4ad8-9f90-58d2e36b2e17",
+              "parentUUID": "63676914-ba27-4c4c-a04e-d5b0d548af57",
+              "isHook": false,
+              "skipped": false
+            }
+          ],
+          "suites": [],
+          "passes": [
+            "79925051-b594-4bbf-9274-46762963aa30",
+            "a7c9948a-620e-4f42-8b78-87bf019cfeab",
+            "bceb3a85-6b80-4308-a0c3-1cd790e332d4",
+            "24688601-74c9-43d6-9913-bf8e9283f641",
+            "106d6c9e-9148-4ad8-9f90-58d2e36b2e17"
+          ],
+          "failures": [],
+          "pending": [],
+          "skipped": [],
+          "duration": 2752,
+          "root": false,
+          "rootEmpty": false,
+          "_timeout": 2000
+        }
+      ],
+      "passes": [],
+      "failures": [],
+      "pending": [],
+      "skipped": [],
+      "duration": 0,
+      "root": true,
+      "rootEmpty": true,
+      "_timeout": 2000
+    }
+  ],
+  "meta": {
+    "mocha": {
+      "version": "7.0.1"
+    },
+    "mochawesome": {
+      "options": {
+        "quiet": false,
+        "reportFilename": "mochawesome",
+        "saveHtml": false,
+        "saveJson": true,
+        "consoleReporter": "spec",
+        "useInlineDiffs": false,
+        "code": true
+      },
+      "version": "7.1.3"
+    },
+    "marge": {
+      "options": {
+        "id": "default",
+        "reportDir": "cypress/reports/mocha",
+        "quite": true,
+        "overwrite": false,
+        "html": false,
+        "json": true
+      },
+      "version": "6.2.0"
+    }
+  }
+}

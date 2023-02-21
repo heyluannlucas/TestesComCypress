@@ -1,0 +1,183 @@
+{
+  "stats": {
+    "suites": 1,
+    "tests": 5,
+    "passes": 5,
+    "pending": 0,
+    "failures": 0,
+    "start": "2022-06-21T01:49:41.400Z",
+    "end": "2022-06-21T01:49:48.481Z",
+    "duration": 7081,
+    "testsRegistered": 5,
+    "passPercent": 100,
+    "pendingPercent": 0,
+    "other": 0,
+    "hasOther": false,
+    "skipped": 0,
+    "hasSkipped": false
+  },
+  "results": [
+    {
+      "uuid": "4c9c47a1-0e7e-401a-af2b-31e78ce3fa82",
+      "title": "",
+      "fullFile": "cypress/integration/3.produtos/3.4-putProdutos.spec.js",
+      "file": "cypress/integration/3.produtos/3.4-putProdutos.spec.js",
+      "beforeHooks": [],
+      "afterHooks": [],
+      "tests": [],
+      "suites": [
+        {
+          "uuid": "0a1799ea-316b-463c-9475-f5e8e6bdfc5b",
+          "title": "Testes para /produtos - PUT",
+          "fullFile": "",
+          "file": "",
+          "beforeHooks": [],
+          "afterHooks": [],
+          "tests": [
+            {
+              "title": "Deve atualizar nome de um produto",
+              "fullTitle": "Testes para /produtos - PUT Deve atualizar nome de um produto",
+              "timedOut": null,
+              "duration": 932,
+              "state": "passed",
+              "speed": "fast",
+              "pass": true,
+              "fail": false,
+              "pending": false,
+              "context": null,
+              "code": "produto.nome = faker.commerce.productName();\ncy.putProduct(tokenAdmin, productId, produto).should(res => {\n  _resultsValidation.default.newData(res);\n  cy.contractValidation(res, 'PUT/produtos', 200);\n});",
+              "err": {},
+              "uuid": "e9d9842b-111f-4d11-97e7-8462584f5609",
+              "parentUUID": "0a1799ea-316b-463c-9475-f5e8e6bdfc5b",
+              "isHook": false,
+              "skipped": false
+            },
+            {
+              "title": "Não deve atualizar dados de um produto com nome existente",
+              "fullTitle": "Testes para /produtos - PUT Não deve atualizar dados de um produto com nome existente",
+              "timedOut": null,
+              "duration": 1120,
+              "state": "passed",
+              "speed": "fast",
+              "pass": true,
+              "fail": false,
+              "pending": false,
+              "context": null,
+              "code": "cy.getAllProducts().then(allProdutcs => {\n  produto.nome = allProdutcs.body.produtos[0].nome;\n  cy.putProduct(tokenAdmin, productId, produto).should(res => {\n    _resultsValidation.default.productAlreadyExist(res);\n    cy.contractValidation(res, 'PUT/produtos', 400);\n  });\n});",
+              "err": {},
+              "uuid": "99b75bae-cc6a-422d-a6a2-2dcc879f61bf",
+              "parentUUID": "0a1799ea-316b-463c-9475-f5e8e6bdfc5b",
+              "isHook": false,
+              "skipped": false
+            },
+            {
+              "title": "Não deve atualizar dados de produtos sem token de adm",
+              "fullTitle": "Testes para /produtos - PUT Não deve atualizar dados de produtos sem token de adm",
+              "timedOut": null,
+              "duration": 834,
+              "state": "passed",
+              "speed": "fast",
+              "pass": true,
+              "fail": false,
+              "pending": false,
+              "context": null,
+              "code": "cy.putProduct(faker.random.uuid, productId, produto).should(res => {\n  _resultsValidation.default.notAccess(res);\n  cy.contractValidation(res, 'PUT/produtos', 401);\n});",
+              "err": {},
+              "uuid": "12ae749e-600b-4649-b4a5-ad5687d157d2",
+              "parentUUID": "0a1799ea-316b-463c-9475-f5e8e6bdfc5b",
+              "isHook": false,
+              "skipped": false
+            },
+            {
+              "title": "Não deve atualizar dados de produtos com token vazio",
+              "fullTitle": "Testes para /produtos - PUT Não deve atualizar dados de produtos com token vazio",
+              "timedOut": null,
+              "duration": 817,
+              "state": "passed",
+              "speed": "fast",
+              "pass": true,
+              "fail": false,
+              "pending": false,
+              "context": null,
+              "code": "cy.putProduct('', productId, produto).should(res => {\n  _resultsValidation.default.notAccess(res);\n  cy.contractValidation(res, 'PUT/produtos', 401);\n});",
+              "err": {},
+              "uuid": "d6e0c57c-cbe4-4c54-9238-ebea31dc9f5d",
+              "parentUUID": "0a1799ea-316b-463c-9475-f5e8e6bdfc5b",
+              "isHook": false,
+              "skipped": false
+            },
+            {
+              "title": "Não deve atualizar dados de produtos com usuario padrão",
+              "fullTitle": "Testes para /produtos - PUT Não deve atualizar dados de produtos com usuario padrão",
+              "timedOut": null,
+              "duration": 1243,
+              "state": "passed",
+              "speed": "fast",
+              "pass": true,
+              "fail": false,
+              "pending": false,
+              "context": null,
+              "code": "cy.getToken({\n  administrador: false\n}).then(token => {\n  cy.putProduct(token, productId, produto).should(res => {\n    _resultsValidation.default.notAdm(res);\n    cy.contractValidation(res, 'PUT/produtos', 403);\n  });\n});",
+              "err": {},
+              "uuid": "b365cc89-27e4-4142-b632-b6954518dbeb",
+              "parentUUID": "0a1799ea-316b-463c-9475-f5e8e6bdfc5b",
+              "isHook": false,
+              "skipped": false
+            }
+          ],
+          "suites": [],
+          "passes": [
+            "e9d9842b-111f-4d11-97e7-8462584f5609",
+            "99b75bae-cc6a-422d-a6a2-2dcc879f61bf",
+            "12ae749e-600b-4649-b4a5-ad5687d157d2",
+            "d6e0c57c-cbe4-4c54-9238-ebea31dc9f5d",
+            "b365cc89-27e4-4142-b632-b6954518dbeb"
+          ],
+          "failures": [],
+          "pending": [],
+          "skipped": [],
+          "duration": 4946,
+          "root": false,
+          "rootEmpty": false,
+          "_timeout": 2000
+        }
+      ],
+      "passes": [],
+      "failures": [],
+      "pending": [],
+      "skipped": [],
+      "duration": 0,
+      "root": true,
+      "rootEmpty": true,
+      "_timeout": 2000
+    }
+  ],
+  "meta": {
+    "mocha": {
+      "version": "7.0.1"
+    },
+    "mochawesome": {
+      "options": {
+        "quiet": false,
+        "reportFilename": "mochawesome",
+        "saveHtml": false,
+        "saveJson": true,
+        "consoleReporter": "spec",
+        "useInlineDiffs": false,
+        "code": true
+      },
+      "version": "7.1.3"
+    },
+    "marge": {
+      "options": {
+        "id": "default",
+        "reportDir": "cypress/reports/mocha",
+        "quite": true,
+        "overwrite": false,
+        "html": false,
+        "json": true
+      },
+      "version": "6.2.0"
+    }
+  }
+}

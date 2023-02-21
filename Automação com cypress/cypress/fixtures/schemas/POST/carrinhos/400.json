@@ -1,0 +1,18 @@
+{
+"required": [
+    "message"
+],
+"properties": {
+    "message": {
+        "type": "string",
+        "default": "",
+        "title": "The message Schema",
+        "examples": [
+            "Não é permitido possuir produto duplicado | Não é permitido ter mais de 1 carrinho | Produto não encontrado | Produto não possui quantidade suficiente"
+        ]
+    }
+},
+"examples": [{
+    "message": "Não é permitido possuir produto duplicado | Não é permitido ter mais de 1 carrinho | Produto não encontrado | Produto não possui quantidade suficiente"
+}]
+}

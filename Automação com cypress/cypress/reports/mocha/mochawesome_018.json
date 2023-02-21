@@ -1,0 +1,183 @@
+{
+  "stats": {
+    "suites": 1,
+    "tests": 5,
+    "passes": 5,
+    "pending": 0,
+    "failures": 0,
+    "start": "2022-06-21T01:58:04.904Z",
+    "end": "2022-06-21T01:58:07.928Z",
+    "duration": 3024,
+    "testsRegistered": 5,
+    "passPercent": 100,
+    "pendingPercent": 0,
+    "other": 0,
+    "hasOther": false,
+    "skipped": 0,
+    "hasSkipped": false
+  },
+  "results": [
+    {
+      "uuid": "07477d50-3f61-429a-b1ef-aef88e67c40a",
+      "title": "",
+      "fullFile": "cypress/integration/3.produtos/3.1-postProdutos.spec.js",
+      "file": "cypress/integration/3.produtos/3.1-postProdutos.spec.js",
+      "beforeHooks": [],
+      "afterHooks": [],
+      "tests": [],
+      "suites": [
+        {
+          "uuid": "1d595c81-178f-47ce-85a8-fc435e9b687d",
+          "title": "Testes para /produtos - POST",
+          "fullFile": "",
+          "file": "",
+          "beforeHooks": [],
+          "afterHooks": [],
+          "tests": [
+            {
+              "title": "Deve cadastrar um produto com sucesso",
+              "fullTitle": "Testes para /produtos - POST Deve cadastrar um produto com sucesso",
+              "timedOut": null,
+              "duration": 965,
+              "state": "passed",
+              "speed": "fast",
+              "pass": true,
+              "fail": false,
+              "pending": false,
+              "context": null,
+              "code": "cy.postProduct(tokenAdmin, produto).should(res => {\n  _resultsValidation.default.successful(res);\n  cy.contractValidation(res, 'POST/produtos', 201);\n});\ncy.get('@product').then(produto => {\n  cy.deleteProduct(tokenAdmin, produto.body._id);\n});",
+              "err": {},
+              "uuid": "a05d6807-ec08-47ac-b4ba-6212ae0edb44",
+              "parentUUID": "1d595c81-178f-47ce-85a8-fc435e9b687d",
+              "isHook": false,
+              "skipped": false
+            },
+            {
+              "title": "Não deve cadastrar produto com nome existente",
+              "fullTitle": "Testes para /produtos - POST Não deve cadastrar produto com nome existente",
+              "timedOut": null,
+              "duration": 651,
+              "state": "passed",
+              "speed": "fast",
+              "pass": true,
+              "fail": false,
+              "pending": false,
+              "context": null,
+              "code": "cy.postProduct(tokenAdmin, produto);\ncy.postProduct(tokenAdmin, produto).should(res => {\n  _resultsValidation.default.productAlreadyExist(res);\n  cy.contractValidation(res, 'POST/produtos', 400);\n});\ncy.get('@product').then(produto => {\n  cy.deleteProduct(tokenAdmin, produto.body._id);\n});",
+              "err": {},
+              "uuid": "b78f11ca-9cc4-4d94-b51d-06706dd9616a",
+              "parentUUID": "1d595c81-178f-47ce-85a8-fc435e9b687d",
+              "isHook": false,
+              "skipped": false
+            },
+            {
+              "title": "Não deve cadastrar produto com token adm inválido",
+              "fullTitle": "Testes para /produtos - POST Não deve cadastrar produto com token adm inválido",
+              "timedOut": null,
+              "duration": 261,
+              "state": "passed",
+              "speed": "fast",
+              "pass": true,
+              "fail": false,
+              "pending": false,
+              "context": null,
+              "code": "cy.postProduct(faker.random.uuid, produto).should(res => {\n  _resultsValidation.default.notAccess(res);\n  cy.contractValidation(res, 'POST/produtos', 401);\n});",
+              "err": {},
+              "uuid": "9f805453-7d8c-4900-8c04-2386f71b2c5e",
+              "parentUUID": "1d595c81-178f-47ce-85a8-fc435e9b687d",
+              "isHook": false,
+              "skipped": false
+            },
+            {
+              "title": "Não deve cadastrar com token adm vazio",
+              "fullTitle": "Testes para /produtos - POST Não deve cadastrar com token adm vazio",
+              "timedOut": null,
+              "duration": 240,
+              "state": "passed",
+              "speed": "fast",
+              "pass": true,
+              "fail": false,
+              "pending": false,
+              "context": null,
+              "code": "cy.postProduct('', produto).should(res => {\n  _resultsValidation.default.notAccess(res);\n  cy.contractValidation(res, 'POST/produtos', 401);\n});",
+              "err": {},
+              "uuid": "c4cb435b-f403-456c-b9d0-688420e36979",
+              "parentUUID": "1d595c81-178f-47ce-85a8-fc435e9b687d",
+              "isHook": false,
+              "skipped": false
+            },
+            {
+              "title": "Não deve cadastrar produto sem usuário adm",
+              "fullTitle": "Testes para /produtos - POST Não deve cadastrar produto sem usuário adm",
+              "timedOut": null,
+              "duration": 653,
+              "state": "passed",
+              "speed": "fast",
+              "pass": true,
+              "fail": false,
+              "pending": false,
+              "context": null,
+              "code": "cy.getToken({\n  administrador: false\n}).then(token => {\n  cy.postProduct(token, produto).should(res => {\n    _resultsValidation.default.notAdm(res);\n    cy.contractValidation(res, 'POST/produtos', 403);\n  });\n});",
+              "err": {},
+              "uuid": "967e612f-4c0e-4c7e-a4c2-f3ba015694f3",
+              "parentUUID": "1d595c81-178f-47ce-85a8-fc435e9b687d",
+              "isHook": false,
+              "skipped": false
+            }
+          ],
+          "suites": [],
+          "passes": [
+            "a05d6807-ec08-47ac-b4ba-6212ae0edb44",
+            "b78f11ca-9cc4-4d94-b51d-06706dd9616a",
+            "9f805453-7d8c-4900-8c04-2386f71b2c5e",
+            "c4cb435b-f403-456c-b9d0-688420e36979",
+            "967e612f-4c0e-4c7e-a4c2-f3ba015694f3"
+          ],
+          "failures": [],
+          "pending": [],
+          "skipped": [],
+          "duration": 2770,
+          "root": false,
+          "rootEmpty": false,
+          "_timeout": 2000
+        }
+      ],
+      "passes": [],
+      "failures": [],
+      "pending": [],
+      "skipped": [],
+      "duration": 0,
+      "root": true,
+      "rootEmpty": true,
+      "_timeout": 2000
+    }
+  ],
+  "meta": {
+    "mocha": {
+      "version": "7.0.1"
+    },
+    "mochawesome": {
+      "options": {
+        "quiet": false,
+        "reportFilename": "mochawesome",
+        "saveHtml": false,
+        "saveJson": true,
+        "consoleReporter": "spec",
+        "useInlineDiffs": false,
+        "code": true
+      },
+      "version": "7.1.3"
+    },
+    "marge": {
+      "options": {
+        "id": "default",
+        "reportDir": "cypress/reports/mocha",
+        "quite": true,
+        "overwrite": false,
+        "html": false,
+        "json": true
+      },
+      "version": "6.2.0"
+    }
+  }
+}

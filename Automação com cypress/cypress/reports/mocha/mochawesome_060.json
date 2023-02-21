@@ -1,0 +1,183 @@
+{
+  "stats": {
+    "suites": 1,
+    "tests": 5,
+    "passes": 5,
+    "pending": 0,
+    "failures": 0,
+    "start": "2022-06-21T23:44:28.783Z",
+    "end": "2022-06-21T23:44:34.001Z",
+    "duration": 5218,
+    "testsRegistered": 5,
+    "passPercent": 100,
+    "pendingPercent": 0,
+    "other": 0,
+    "hasOther": false,
+    "skipped": 0,
+    "hasSkipped": false
+  },
+  "results": [
+    {
+      "uuid": "45426246-5747-4c30-8b3b-78711ffda56c",
+      "title": "",
+      "fullFile": "cypress/integration/3.produtos/3.3-deleteProdutos.spec.js",
+      "file": "cypress/integration/3.produtos/3.3-deleteProdutos.spec.js",
+      "beforeHooks": [],
+      "afterHooks": [],
+      "tests": [],
+      "suites": [
+        {
+          "uuid": "3b43643f-e0f5-4b11-8342-24fd6bd422c8",
+          "title": "CT-RP 008 - EXCLUSÃO DE DADOS EM /PRODUTOS",
+          "fullFile": "",
+          "file": "",
+          "beforeHooks": [],
+          "afterHooks": [],
+          "tests": [
+            {
+              "title": "Deve deletar um produto",
+              "fullTitle": "CT-RP 008 - EXCLUSÃO DE DADOS EM /PRODUTOS Deve deletar um produto",
+              "timedOut": null,
+              "duration": 1424,
+              "state": "passed",
+              "speed": "fast",
+              "pass": true,
+              "fail": false,
+              "pending": false,
+              "context": null,
+              "code": "cy.deleteProduct(tokenAdmin, productId).should(res => {\n  _responsesValidation.default.deleted(res);\n  cy.contractValidation(res, 'DELETE/produtos', 200);\n});",
+              "err": {},
+              "uuid": "715a0cac-3033-4ff4-a106-dc44cd1d36f3",
+              "parentUUID": "3b43643f-e0f5-4b11-8342-24fd6bd422c8",
+              "isHook": false,
+              "skipped": false
+            },
+            {
+              "title": "Não deve deletar produto em carrinho",
+              "fullTitle": "CT-RP 008 - EXCLUSÃO DE DADOS EM /PRODUTOS Não deve deletar produto em carrinho",
+              "timedOut": null,
+              "duration": 901,
+              "state": "passed",
+              "speed": "fast",
+              "pass": true,
+              "fail": false,
+              "pending": false,
+              "context": null,
+              "code": "cy.postCart(tokenAdmin, productId);\ncy.deleteProduct(tokenAdmin, productId).should(res => {\n  _responsesValidation.default.deleteProductNotAllowed(res);\n  cy.contractValidation(res, 'DELETE/produtos', 400);\n  cy.buyItOrNot(tokenAdmin, 'cancelar-compra');\n});",
+              "err": {},
+              "uuid": "83111d4c-50e5-4e76-9a1a-e2260c5c3132",
+              "parentUUID": "3b43643f-e0f5-4b11-8342-24fd6bd422c8",
+              "isHook": false,
+              "skipped": false
+            },
+            {
+              "title": "Não deve deletar produto com token inválido",
+              "fullTitle": "CT-RP 008 - EXCLUSÃO DE DADOS EM /PRODUTOS Não deve deletar produto com token inválido",
+              "timedOut": null,
+              "duration": 456,
+              "state": "passed",
+              "speed": "fast",
+              "pass": true,
+              "fail": false,
+              "pending": false,
+              "context": null,
+              "code": "cy.deleteProduct(faker.random.uuid, productId).should(res => {\n  _responsesValidation.default.notAccess(res);\n  cy.contractValidation(res, 'DELETE/produtos', 401);\n});",
+              "err": {},
+              "uuid": "8e32c56b-4530-4025-b6f8-d2d6d1a105c2",
+              "parentUUID": "3b43643f-e0f5-4b11-8342-24fd6bd422c8",
+              "isHook": false,
+              "skipped": false
+            },
+            {
+              "title": "Não deve deletar produto com token vazio",
+              "fullTitle": "CT-RP 008 - EXCLUSÃO DE DADOS EM /PRODUTOS Não deve deletar produto com token vazio",
+              "timedOut": null,
+              "duration": 433,
+              "state": "passed",
+              "speed": "fast",
+              "pass": true,
+              "fail": false,
+              "pending": false,
+              "context": null,
+              "code": "cy.deleteProduct('', productId).should(res => {\n  _responsesValidation.default.notAccess(res);\n  cy.contractValidation(res, 'DELETE/produtos', 401);\n});",
+              "err": {},
+              "uuid": "e5005c9f-fa4f-447e-92c4-cb739b6dc02b",
+              "parentUUID": "3b43643f-e0f5-4b11-8342-24fd6bd422c8",
+              "isHook": false,
+              "skipped": false
+            },
+            {
+              "title": "Não deve deletar produto com usuário padrão",
+              "fullTitle": "CT-RP 008 - EXCLUSÃO DE DADOS EM /PRODUTOS Não deve deletar produto com usuário padrão",
+              "timedOut": null,
+              "duration": 454,
+              "state": "passed",
+              "speed": "fast",
+              "pass": true,
+              "fail": false,
+              "pending": false,
+              "context": null,
+              "code": "cy.deleteProduct(token, productId).should(res => {\n  _responsesValidation.default.notAdm(res);\n  cy.contractValidation(res, 'DELETE/produtos', 403);\n});",
+              "err": {},
+              "uuid": "8bbf56e6-bb76-4aa7-810f-81a534132ba7",
+              "parentUUID": "3b43643f-e0f5-4b11-8342-24fd6bd422c8",
+              "isHook": false,
+              "skipped": false
+            }
+          ],
+          "suites": [],
+          "passes": [
+            "715a0cac-3033-4ff4-a106-dc44cd1d36f3",
+            "83111d4c-50e5-4e76-9a1a-e2260c5c3132",
+            "8e32c56b-4530-4025-b6f8-d2d6d1a105c2",
+            "e5005c9f-fa4f-447e-92c4-cb739b6dc02b",
+            "8bbf56e6-bb76-4aa7-810f-81a534132ba7"
+          ],
+          "failures": [],
+          "pending": [],
+          "skipped": [],
+          "duration": 3668,
+          "root": false,
+          "rootEmpty": false,
+          "_timeout": 2000
+        }
+      ],
+      "passes": [],
+      "failures": [],
+      "pending": [],
+      "skipped": [],
+      "duration": 0,
+      "root": true,
+      "rootEmpty": true,
+      "_timeout": 2000
+    }
+  ],
+  "meta": {
+    "mocha": {
+      "version": "7.0.1"
+    },
+    "mochawesome": {
+      "options": {
+        "quiet": false,
+        "reportFilename": "mochawesome",
+        "saveHtml": false,
+        "saveJson": true,
+        "consoleReporter": "spec",
+        "useInlineDiffs": false,
+        "code": true
+      },
+      "version": "7.1.3"
+    },
+    "marge": {
+      "options": {
+        "id": "default",
+        "reportDir": "cypress/reports/mocha",
+        "quite": true,
+        "overwrite": false,
+        "html": false,
+        "json": true
+      },
+      "version": "6.2.0"
+    }
+  }
+}

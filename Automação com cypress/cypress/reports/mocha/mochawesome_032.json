@@ -1,0 +1,221 @@
+{
+  "stats": {
+    "suites": 1,
+    "tests": 7,
+    "passes": 7,
+    "pending": 0,
+    "failures": 0,
+    "start": "2022-06-21T23:28:42.235Z",
+    "end": "2022-06-21T23:28:44.952Z",
+    "duration": 2717,
+    "testsRegistered": 7,
+    "passPercent": 100,
+    "pendingPercent": 0,
+    "other": 0,
+    "hasOther": false,
+    "skipped": 0,
+    "hasSkipped": false
+  },
+  "results": [
+    {
+      "uuid": "a225131c-140a-4fda-ac6a-c23a46f9de9f",
+      "title": "",
+      "fullFile": "cypress/integration/1.usuarios/1.1-postUsuarios.spec.js",
+      "file": "cypress/integration/1.usuarios/1.1-postUsuarios.spec.js",
+      "beforeHooks": [],
+      "afterHooks": [],
+      "tests": [],
+      "suites": [
+        {
+          "uuid": "8ef5da38-3176-4ef4-857d-17c8f4a556ed",
+          "title": "CT-RU 001 - INSERÇÃO DE DADOS EM /USUÁRIOS",
+          "fullFile": "",
+          "file": "",
+          "beforeHooks": [],
+          "afterHooks": [],
+          "tests": [
+            {
+              "title": "Cadastrar um novo usuário com sucesso",
+              "fullTitle": "CT-RU 001 - INSERÇÃO DE DADOS EM /USUÁRIOS Cadastrar um novo usuário com sucesso",
+              "timedOut": null,
+              "duration": 894,
+              "state": "passed",
+              "speed": "fast",
+              "pass": true,
+              "fail": false,
+              "pending": false,
+              "context": null,
+              "code": "cy.postUser(newUser).as('id').should(res => {\n  _responsesValidation.default.successful(res);\n  cy.contractValidation(res, 'POST/usuarios', 201);\n});\ncy.get('@userId').then(id => {\n  cy.deleteUser(id.body._id);\n});",
+              "err": {},
+              "uuid": "41f2e227-c7cb-47d5-a5f9-14a4efdaffd4",
+              "parentUUID": "8ef5da38-3176-4ef4-857d-17c8f4a556ed",
+              "isHook": false,
+              "skipped": false
+            },
+            {
+              "title": "Não deve cadastrar com email já existente",
+              "fullTitle": "CT-RU 001 - INSERÇÃO DE DADOS EM /USUÁRIOS Não deve cadastrar com email já existente",
+              "timedOut": null,
+              "duration": 652,
+              "state": "passed",
+              "speed": "fast",
+              "pass": true,
+              "fail": false,
+              "pending": false,
+              "context": null,
+              "code": "cy.postUser(newUser).as('beforePost');\ncy.postUser(newUser).should(res => {\n  _responsesValidation.default.unsuccessful(res);\n  cy.contractValidation(res, 'POST/usuarios', 400);\n});\ncy.get('@beforePost').then(id => {\n  cy.deleteUser(id.body._id);\n});",
+              "err": {},
+              "uuid": "970d877a-68bb-411f-8a22-e0fe41084885",
+              "parentUUID": "8ef5da38-3176-4ef4-857d-17c8f4a556ed",
+              "isHook": false,
+              "skipped": false
+            },
+            {
+              "title": "Não deve cadastrar usuário sem email",
+              "fullTitle": "CT-RU 001 - INSERÇÃO DE DADOS EM /USUÁRIOS Não deve cadastrar usuário sem email",
+              "timedOut": null,
+              "duration": 223,
+              "state": "passed",
+              "speed": "fast",
+              "pass": true,
+              "fail": false,
+              "pending": false,
+              "context": null,
+              "code": "delete newUser.email;\ncy.postUser(newUser).should(res => {\n  _responsesValidation.default.obligatoryEmail(res);\n  cy.contractValidation(res, 'POST/usuarios', 400);\n});",
+              "err": {},
+              "uuid": "634b1f28-a77e-4460-9dc1-5837fa721dd0",
+              "parentUUID": "8ef5da38-3176-4ef4-857d-17c8f4a556ed",
+              "isHook": false,
+              "skipped": false
+            },
+            {
+              "title": "Não deve cadastrar usuário sem nome",
+              "fullTitle": "CT-RU 001 - INSERÇÃO DE DADOS EM /USUÁRIOS Não deve cadastrar usuário sem nome",
+              "timedOut": null,
+              "duration": 228,
+              "state": "passed",
+              "speed": "fast",
+              "pass": true,
+              "fail": false,
+              "pending": false,
+              "context": null,
+              "code": "delete newUser.nome;\ncy.postUser(newUser).should(res => {\n  _responsesValidation.default.obligatoryName(res);\n  cy.contractValidation(res, 'POST/usuarios', 400);\n});",
+              "err": {},
+              "uuid": "87d01cd8-ed7b-4505-a281-3c196930c8d4",
+              "parentUUID": "8ef5da38-3176-4ef4-857d-17c8f4a556ed",
+              "isHook": false,
+              "skipped": false
+            },
+            {
+              "title": "Não deve cadastrar usuário sem senha",
+              "fullTitle": "CT-RU 001 - INSERÇÃO DE DADOS EM /USUÁRIOS Não deve cadastrar usuário sem senha",
+              "timedOut": null,
+              "duration": 224,
+              "state": "passed",
+              "speed": "fast",
+              "pass": true,
+              "fail": false,
+              "pending": false,
+              "context": null,
+              "code": "delete newUser.password;\ncy.postUser(newUser).should(res => {\n  _responsesValidation.default.obligatoryPassword(res);\n  cy.contractValidation(res, 'POST/usuarios', 400);\n});",
+              "err": {},
+              "uuid": "67442c18-84ae-4c05-b462-9d6ce72141b9",
+              "parentUUID": "8ef5da38-3176-4ef4-857d-17c8f4a556ed",
+              "isHook": false,
+              "skipped": false
+            },
+            {
+              "title": "Não deve cadastrar usuário sem informar administrador",
+              "fullTitle": "CT-RU 001 - INSERÇÃO DE DADOS EM /USUÁRIOS Não deve cadastrar usuário sem informar administrador",
+              "timedOut": null,
+              "duration": 225,
+              "state": "passed",
+              "speed": "fast",
+              "pass": true,
+              "fail": false,
+              "pending": false,
+              "context": null,
+              "code": "delete newUser.administrador;\ncy.postUser(newUser).should(res => {\n  _responsesValidation.default.obligatoryAdm(res);\n  cy.contractValidation(res, 'POST/usuarios', 400);\n});",
+              "err": {},
+              "uuid": "f32e8b26-80d0-48f2-8e61-c54d980a36f6",
+              "parentUUID": "8ef5da38-3176-4ef4-857d-17c8f4a556ed",
+              "isHook": false,
+              "skipped": false
+            },
+            {
+              "title": "Não deve cadastrar usuário sem nenhuma informação passada",
+              "fullTitle": "CT-RU 001 - INSERÇÃO DE DADOS EM /USUÁRIOS Não deve cadastrar usuário sem nenhuma informação passada",
+              "timedOut": null,
+              "duration": 232,
+              "state": "passed",
+              "speed": "fast",
+              "pass": true,
+              "fail": false,
+              "pending": false,
+              "context": null,
+              "code": "newUser = {};\ncy.postUser(newUser).should(res => {\n  _responsesValidation.default.obligatoryInfos(res);\n  cy.contractValidation(res, 'POST/usuarios', 400);\n});",
+              "err": {},
+              "uuid": "afa4f5a7-5a53-4df9-ab7d-fae4388a8b1b",
+              "parentUUID": "8ef5da38-3176-4ef4-857d-17c8f4a556ed",
+              "isHook": false,
+              "skipped": false
+            }
+          ],
+          "suites": [],
+          "passes": [
+            "41f2e227-c7cb-47d5-a5f9-14a4efdaffd4",
+            "970d877a-68bb-411f-8a22-e0fe41084885",
+            "634b1f28-a77e-4460-9dc1-5837fa721dd0",
+            "87d01cd8-ed7b-4505-a281-3c196930c8d4",
+            "67442c18-84ae-4c05-b462-9d6ce72141b9",
+            "f32e8b26-80d0-48f2-8e61-c54d980a36f6",
+            "afa4f5a7-5a53-4df9-ab7d-fae4388a8b1b"
+          ],
+          "failures": [],
+          "pending": [],
+          "skipped": [],
+          "duration": 2678,
+          "root": false,
+          "rootEmpty": false,
+          "_timeout": 2000
+        }
+      ],
+      "passes": [],
+      "failures": [],
+      "pending": [],
+      "skipped": [],
+      "duration": 0,
+      "root": true,
+      "rootEmpty": true,
+      "_timeout": 2000
+    }
+  ],
+  "meta": {
+    "mocha": {
+      "version": "7.0.1"
+    },
+    "mochawesome": {
+      "options": {
+        "quiet": false,
+        "reportFilename": "mochawesome",
+        "saveHtml": false,
+        "saveJson": true,
+        "consoleReporter": "spec",
+        "useInlineDiffs": false,
+        "code": true
+      },
+      "version": "7.1.3"
+    },
+    "marge": {
+      "options": {
+        "id": "default",
+        "reportDir": "cypress/reports/mocha",
+        "quite": true,
+        "overwrite": false,
+        "html": false,
+        "json": true
+      },
+      "version": "6.2.0"
+    }
+  }
+}

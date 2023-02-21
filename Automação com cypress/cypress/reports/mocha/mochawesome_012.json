@@ -1,0 +1,183 @@
+{
+  "stats": {
+    "suites": 1,
+    "tests": 5,
+    "passes": 5,
+    "pending": 0,
+    "failures": 0,
+    "start": "2022-06-21T01:56:11.733Z",
+    "end": "2022-06-21T01:56:18.968Z",
+    "duration": 7235,
+    "testsRegistered": 5,
+    "passPercent": 100,
+    "pendingPercent": 0,
+    "other": 0,
+    "hasOther": false,
+    "skipped": 0,
+    "hasSkipped": false
+  },
+  "results": [
+    {
+      "uuid": "5c37e9b8-7b25-4621-83b2-c3e371adcdd7",
+      "title": "",
+      "fullFile": "cypress/integration/3.produtos/3.3-deleteProdutos.spec.js",
+      "file": "cypress/integration/3.produtos/3.3-deleteProdutos.spec.js",
+      "beforeHooks": [],
+      "afterHooks": [],
+      "tests": [],
+      "suites": [
+        {
+          "uuid": "259f5365-759c-4411-861a-b5ed1ee3a08f",
+          "title": "Testes para /produtos - DELETE",
+          "fullFile": "",
+          "file": "",
+          "beforeHooks": [],
+          "afterHooks": [],
+          "tests": [
+            {
+              "title": "Deve deletar um produto",
+              "fullTitle": "Testes para /produtos - DELETE Deve deletar um produto",
+              "timedOut": null,
+              "duration": 947,
+              "state": "passed",
+              "speed": "fast",
+              "pass": true,
+              "fail": false,
+              "pending": false,
+              "context": null,
+              "code": "cy.get('@product').then(response => {\n  cy.deleteProduct(tokenAdmin, response.body._id).should(res => {\n    _resultsValidation.default.deleted(res);\n    cy.contractValidation(res, 'DELETE/produtos', 200);\n  });\n});",
+              "err": {},
+              "uuid": "f411285f-eabe-4502-92a0-151654006072",
+              "parentUUID": "259f5365-759c-4411-861a-b5ed1ee3a08f",
+              "isHook": false,
+              "skipped": false
+            },
+            {
+              "title": "Não deve deletar produto em carrinho ",
+              "fullTitle": "Testes para /produtos - DELETE Não deve deletar produto em carrinho ",
+              "timedOut": null,
+              "duration": 1267,
+              "state": "passed",
+              "speed": "fast",
+              "pass": true,
+              "fail": false,
+              "pending": false,
+              "context": null,
+              "code": "cy.postCart(tokenAdmin, productId);\ncy.deleteProduct(tokenAdmin, productId).should(res => {\n  _resultsValidation.default.deleteProductNotAllowed(res);\n  cy.contractValidation(res, 'DELETE/produtos', 400);\n  cy.buyItOrNot(tokenAdmin, 'cancelar-compra');\n});",
+              "err": {},
+              "uuid": "9487c3a5-23c0-4402-9039-64bcb0621d2d",
+              "parentUUID": "259f5365-759c-4411-861a-b5ed1ee3a08f",
+              "isHook": false,
+              "skipped": false
+            },
+            {
+              "title": "Não deve deletar produto com token inválido",
+              "fullTitle": "Testes para /produtos - DELETE Não deve deletar produto com token inválido",
+              "timedOut": null,
+              "duration": 846,
+              "state": "passed",
+              "speed": "fast",
+              "pass": true,
+              "fail": false,
+              "pending": false,
+              "context": null,
+              "code": "cy.deleteProduct(faker.random.uuid, productId).should(res => {\n  _resultsValidation.default.notAccess(res);\n  cy.contractValidation(res, 'DELETE/produtos', 401);\n});",
+              "err": {},
+              "uuid": "dfce0915-8a7c-41f6-98bf-fa2f8d9d18ad",
+              "parentUUID": "259f5365-759c-4411-861a-b5ed1ee3a08f",
+              "isHook": false,
+              "skipped": false
+            },
+            {
+              "title": "Não deve deletar produto com token vazio",
+              "fullTitle": "Testes para /produtos - DELETE Não deve deletar produto com token vazio",
+              "timedOut": null,
+              "duration": 831,
+              "state": "passed",
+              "speed": "fast",
+              "pass": true,
+              "fail": false,
+              "pending": false,
+              "context": null,
+              "code": "cy.deleteProduct('', productId).should(res => {\n  _resultsValidation.default.notAccess(res);\n  cy.contractValidation(res, 'DELETE/produtos', 401);\n});",
+              "err": {},
+              "uuid": "7ecb8461-18aa-4d82-bbd8-2738bd6c2418",
+              "parentUUID": "259f5365-759c-4411-861a-b5ed1ee3a08f",
+              "isHook": false,
+              "skipped": false
+            },
+            {
+              "title": "Não deve deletar produto com usuário padrão",
+              "fullTitle": "Testes para /produtos - DELETE Não deve deletar produto com usuário padrão",
+              "timedOut": null,
+              "duration": 1268,
+              "state": "passed",
+              "speed": "fast",
+              "pass": true,
+              "fail": false,
+              "pending": false,
+              "context": null,
+              "code": "cy.getToken({\n  administrador: false\n}).then(token => {\n  cy.deleteProduct(token, productId).should(res => {\n    _resultsValidation.default.notAdm(res);\n    cy.contractValidation(res, 'DELETE/produtos', 403);\n  });\n});",
+              "err": {},
+              "uuid": "455addc7-ed06-4230-a2eb-54e0b2676430",
+              "parentUUID": "259f5365-759c-4411-861a-b5ed1ee3a08f",
+              "isHook": false,
+              "skipped": false
+            }
+          ],
+          "suites": [],
+          "passes": [
+            "f411285f-eabe-4502-92a0-151654006072",
+            "9487c3a5-23c0-4402-9039-64bcb0621d2d",
+            "dfce0915-8a7c-41f6-98bf-fa2f8d9d18ad",
+            "7ecb8461-18aa-4d82-bbd8-2738bd6c2418",
+            "455addc7-ed06-4230-a2eb-54e0b2676430"
+          ],
+          "failures": [],
+          "pending": [],
+          "skipped": [],
+          "duration": 5159,
+          "root": false,
+          "rootEmpty": false,
+          "_timeout": 2000
+        }
+      ],
+      "passes": [],
+      "failures": [],
+      "pending": [],
+      "skipped": [],
+      "duration": 0,
+      "root": true,
+      "rootEmpty": true,
+      "_timeout": 2000
+    }
+  ],
+  "meta": {
+    "mocha": {
+      "version": "7.0.1"
+    },
+    "mochawesome": {
+      "options": {
+        "quiet": false,
+        "reportFilename": "mochawesome",
+        "saveHtml": false,
+        "saveJson": true,
+        "consoleReporter": "spec",
+        "useInlineDiffs": false,
+        "code": true
+      },
+      "version": "7.1.3"
+    },
+    "marge": {
+      "options": {
+        "id": "default",
+        "reportDir": "cypress/reports/mocha",
+        "quite": true,
+        "overwrite": false,
+        "html": false,
+        "json": true
+      },
+      "version": "6.2.0"
+    }
+  }
+}

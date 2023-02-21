@@ -1,0 +1,66 @@
+{
+    "type": "object",
+    "required": [
+        "quantidade",
+        "carrinhos"
+    ],
+    "additionalProperties": true,
+    "properties": {
+        "quantidade": {
+            "type": "number"
+        },
+        "carrinhos": {
+            "type": "array",
+            "additionalItems": true,
+            "items": {
+                "type": "object",
+                "required": [
+                    "produtos",
+                    "precoTotal",
+                    "quantidadeTotal",
+                    "idUsuario",
+                    "_id"
+                ],
+                "additionalProperties": true,
+                "properties": {
+                    "produtos": {
+                        "type": "array",
+                        "additionalItems": true,
+                        "items": {
+                            "type": "object",
+                            "required": [
+                                "idProduto",
+                                "quantidade",
+                                "precoUnitario"
+                            ],
+                            "additionalProperties": true,
+                            "properties": {
+                                "idProduto": {
+                                    "type": "string"
+                                },
+                                "quantidade": {
+                                    "type": "number"
+                                },
+                                "precoUnitario": {
+                                    "type": "number"
+                                }
+                            }
+                        }
+                    },
+                    "precoTotal": {
+                        "type": "number"
+                    },
+                    "quantidadeTotal": {
+                        "type": "number"
+                    },
+                    "idUsuario": {
+                        "type": "string"
+                    },
+                    "_id": {
+                        "type": "string"
+                    }
+                }
+            }
+        }
+    }
+}

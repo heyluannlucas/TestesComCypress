@@ -1,0 +1,107 @@
+{
+  "stats": {
+    "suites": 1,
+    "tests": 1,
+    "passes": 1,
+    "pending": 0,
+    "failures": 0,
+    "start": "2022-06-21T23:44:47.989Z",
+    "end": "2022-06-21T23:44:50.313Z",
+    "duration": 2324,
+    "testsRegistered": 1,
+    "passPercent": 100,
+    "pendingPercent": 0,
+    "other": 0,
+    "hasOther": false,
+    "skipped": 0,
+    "hasSkipped": false
+  },
+  "results": [
+    {
+      "uuid": "48be9668-ed3a-4725-907f-2d78aab59a6d",
+      "title": "",
+      "fullFile": "cypress/integration/4.carrinhos/4.1-postCarrinhos.spec.js",
+      "file": "cypress/integration/4.carrinhos/4.1-postCarrinhos.spec.js",
+      "beforeHooks": [],
+      "afterHooks": [],
+      "tests": [],
+      "suites": [
+        {
+          "uuid": "7d911acc-7603-45de-9b40-09d06561b5cc",
+          "title": "CT-RC 009 - INSERÇÃO DE DADOS EM /CARRINHOS",
+          "fullFile": "",
+          "file": "",
+          "beforeHooks": [],
+          "afterHooks": [],
+          "tests": [
+            {
+              "title": "Cadastrar um carrinho",
+              "fullTitle": "CT-RC 009 - INSERÇÃO DE DADOS EM /CARRINHOS Cadastrar um carrinho",
+              "timedOut": null,
+              "duration": 1419,
+              "state": "passed",
+              "speed": "fast",
+              "pass": true,
+              "fail": false,
+              "pending": false,
+              "context": null,
+              "code": "cy.postCart(token, productId).should(res => {\n  _responsesValidation.default.successful(res);\n  cy.contractValidation(res, 'POST/carrinhos', 200);\n});",
+              "err": {},
+              "uuid": "7839bc57-11bf-402f-9d37-b3ea7e6c4dd5",
+              "parentUUID": "7d911acc-7603-45de-9b40-09d06561b5cc",
+              "isHook": false,
+              "skipped": false
+            }
+          ],
+          "suites": [],
+          "passes": [
+            "7839bc57-11bf-402f-9d37-b3ea7e6c4dd5"
+          ],
+          "failures": [],
+          "pending": [],
+          "skipped": [],
+          "duration": 1419,
+          "root": false,
+          "rootEmpty": false,
+          "_timeout": 2000
+        }
+      ],
+      "passes": [],
+      "failures": [],
+      "pending": [],
+      "skipped": [],
+      "duration": 0,
+      "root": true,
+      "rootEmpty": true,
+      "_timeout": 2000
+    }
+  ],
+  "meta": {
+    "mocha": {
+      "version": "7.0.1"
+    },
+    "mochawesome": {
+      "options": {
+        "quiet": false,
+        "reportFilename": "mochawesome",
+        "saveHtml": false,
+        "saveJson": true,
+        "consoleReporter": "spec",
+        "useInlineDiffs": false,
+        "code": true
+      },
+      "version": "7.1.3"
+    },
+    "marge": {
+      "options": {
+        "id": "default",
+        "reportDir": "cypress/reports/mocha",
+        "quite": true,
+        "overwrite": false,
+        "html": false,
+        "json": true
+      },
+      "version": "6.2.0"
+    }
+  }
+}

@@ -1,0 +1,196 @@
+{
+  "stats": {
+    "suites": 1,
+    "tests": 5,
+    "passes": 2,
+    "pending": 0,
+    "failures": 3,
+    "start": "2022-06-22T16:56:49.001Z",
+    "end": "2022-06-22T16:56:53.335Z",
+    "duration": 4334,
+    "testsRegistered": 5,
+    "passPercent": 40,
+    "pendingPercent": 0,
+    "other": 0,
+    "hasOther": false,
+    "skipped": 0,
+    "hasSkipped": false
+  },
+  "results": [
+    {
+      "uuid": "741d3b95-2832-43dd-9d25-b42a946e80be",
+      "title": "",
+      "fullFile": "cypress/integration/2.login/2.1-postLogin.spec.js",
+      "file": "cypress/integration/2.login/2.1-postLogin.spec.js",
+      "beforeHooks": [],
+      "afterHooks": [],
+      "tests": [],
+      "suites": [
+        {
+          "uuid": "a26b99da-fc6e-4731-bfdf-51e3d0d2f291",
+          "title": "CT-RL 005 - INSERÇÃO DE DADOS EM /LOGIN",
+          "fullFile": "",
+          "file": "",
+          "beforeHooks": [],
+          "afterHooks": [],
+          "tests": [
+            {
+              "title": "Deve logar com sucesso",
+              "fullTitle": "CT-RL 005 - INSERÇÃO DE DADOS EM /LOGIN Deve logar com sucesso",
+              "timedOut": null,
+              "duration": 523,
+              "state": "passed",
+              "speed": "fast",
+              "pass": true,
+              "fail": false,
+              "pending": false,
+              "context": null,
+              "code": "cy.login(newUser.email, newUser.password).should(res => {\n  _responsesValidation.default.successfulLogin(res);\n  cy.contractValidation(res, 'POST/login', 200);\n});",
+              "err": {},
+              "uuid": "f822dab5-6376-4009-9e8e-46be3188afa9",
+              "parentUUID": "a26b99da-fc6e-4731-bfdf-51e3d0d2f291",
+              "isHook": false,
+              "skipped": false
+            },
+            {
+              "title": "Não deve logar com senha e/ou email inválido",
+              "fullTitle": "CT-RL 005 - INSERÇÃO DE DADOS EM /LOGIN Não deve logar com senha e/ou email inválido",
+              "timedOut": null,
+              "duration": 435,
+              "state": "passed",
+              "speed": "fast",
+              "pass": true,
+              "fail": false,
+              "pending": false,
+              "context": null,
+              "code": "cy.login(user.incorrect.email, user.incorrect.password).should(res => {\n  _responsesValidation.default.invalidLoginInfos(res);\n  cy.contractValidation(res, 'POST/login', 400);\n});",
+              "err": {},
+              "uuid": "24cb1545-6702-4472-99bb-c6c9c8495adb",
+              "parentUUID": "a26b99da-fc6e-4731-bfdf-51e3d0d2f291",
+              "isHook": false,
+              "skipped": false
+            },
+            {
+              "title": "Não deve logar com email inválido",
+              "fullTitle": "CT-RL 005 - INSERÇÃO DE DADOS EM /LOGIN Não deve logar com email inválido",
+              "timedOut": null,
+              "duration": 680,
+              "state": "failed",
+              "speed": null,
+              "pass": false,
+              "fail": true,
+              "pending": false,
+              "context": null,
+              "code": "cy.login(user.invalid.email, newUser.password).should(res => {\n  _responsesValidation.default.invalidLoginInfos(res);\n  cy.contractValidation(res, 'POST/login', 400);\n});",
+              "err": {
+                "message": "AssertionError: expected undefined to equal 'Email e/ou senha inválidos'",
+                "estack": "AssertionError: expected undefined to equal 'Email e/ou senha inválidos'\n    at Function.invalidLoginInfos (https://serverest.dev/__cypress/tests?p=cypress\\integration\\2.login\\2.1-postLogin.spec.js:309:36)\n    at Context.eval (https://serverest.dev/__cypress/tests?p=cypress\\integration\\2.login\\2.1-postLogin.spec.js:209:36)",
+                "diff": null
+              },
+              "uuid": "8b575c0d-c573-423a-8177-bd87c2aa08dc",
+              "parentUUID": "a26b99da-fc6e-4731-bfdf-51e3d0d2f291",
+              "isHook": false,
+              "skipped": false
+            },
+            {
+              "title": "Não deve logar com email em branco",
+              "fullTitle": "CT-RL 005 - INSERÇÃO DE DADOS EM /LOGIN Não deve logar com email em branco",
+              "timedOut": null,
+              "duration": 753,
+              "state": "failed",
+              "speed": null,
+              "pass": false,
+              "fail": true,
+              "pending": false,
+              "context": null,
+              "code": "cy.loginCodeTrue(user.null.email, newUser.password);",
+              "err": {
+                "message": "CypressError: `cy.request()` failed on:\n\nhttps://serverest.dev/login/\n\nThe response we received from your web server was:\n\n  > 400: Bad Request\n\nThis was considered a failure because the status code was not `2xx` or `3xx`.\n\nIf you do not want status codes to cause failures pass the option: `failOnStatusCode: false`\n\n-----------------------------------------------------------\n\nThe request we sent was:\n\nMethod: POST\nURL: https://serverest.dev/login/\nHeaders: {\n  \"Connection\": \"keep-alive\",\n  \"user-agent\": \"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Cypress/9.7.0 Chrome/100.0.4896.75 Electron/18.0.4 Safari/537.36\",\n  \"accept\": \"*/*\",\n  \"accept-encoding\": \"gzip, deflate\",\n  \"content-type\": \"application/json\",\n  \"content-length\": 41\n}\nBody: {\"email\":\"\",\"password\":\"4cK2DcxcZRorUuo\"}\n\n-----------------------------------------------------------\n\nThe response we got was:\n\nStatus: 400 - Bad Request\nHeaders: {\n  \"access-control-allow-origin\": \"*\",\n  \"x-dns-prefetch-control\": \"off\",\n  \"x-frame-options\": \"SAMEORIGIN\",\n  \"strict-transport-security\": \"max-age=15552000; includeSubDomains\",\n  \"x-download-options\": \"noopen\",\n  \"x-content-type-options\": \"nosniff\",\n  \"x-xss-protection\": \"1; mode=block\",\n  \"x-moesif-transaction-id\": \"ba2651db-933d-4cc4-9902-f200ba821139\",\n  \"content-type\": \"application/json; charset=utf-8\",\n  \"x-cloud-trace-context\": \"a5686f32ac70dc06e80ac947056f7f13\",\n  \"date\": \"Wed, 22 Jun 2022 16:56:53 GMT\",\n  \"server\": \"Google Frontend\",\n  \"content-length\": \"50\"\n}\nBody: {\n  \"email\": \"email não pode ficar em branco\"\n}\n\n\nhttps://on.cypress.io/request",
+                "estack": "CypressError: `cy.request()` failed on:\n\nhttps://serverest.dev/login/\n\nThe response we received from your web server was:\n\n  > 400: Bad Request\n\nThis was considered a failure because the status code was not `2xx` or `3xx`.\n\nIf you do not want status codes to cause failures pass the option: `failOnStatusCode: false`\n\n-----------------------------------------------------------\n\nThe request we sent was:\n\nMethod: POST\nURL: https://serverest.dev/login/\nHeaders: {\n  \"Connection\": \"keep-alive\",\n  \"user-agent\": \"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Cypress/9.7.0 Chrome/100.0.4896.75 Electron/18.0.4 Safari/537.36\",\n  \"accept\": \"*/*\",\n  \"accept-encoding\": \"gzip, deflate\",\n  \"content-type\": \"application/json\",\n  \"content-length\": 41\n}\nBody: {\"email\":\"\",\"password\":\"4cK2DcxcZRorUuo\"}\n\n-----------------------------------------------------------\n\nThe response we got was:\n\nStatus: 400 - Bad Request\nHeaders: {\n  \"access-control-allow-origin\": \"*\",\n  \"x-dns-prefetch-control\": \"off\",\n  \"x-frame-options\": \"SAMEORIGIN\",\n  \"strict-transport-security\": \"max-age=15552000; includeSubDomains\",\n  \"x-download-options\": \"noopen\",\n  \"x-content-type-options\": \"nosniff\",\n  \"x-xss-protection\": \"1; mode=block\",\n  \"x-moesif-transaction-id\": \"ba2651db-933d-4cc4-9902-f200ba821139\",\n  \"content-type\": \"application/json; charset=utf-8\",\n  \"x-cloud-trace-context\": \"a5686f32ac70dc06e80ac947056f7f13\",\n  \"date\": \"Wed, 22 Jun 2022 16:56:53 GMT\",\n  \"server\": \"Google Frontend\",\n  \"content-length\": \"50\"\n}\nBody: {\n  \"email\": \"email não pode ficar em branco\"\n}\n\n\nhttps://on.cypress.io/request\n    at https://serverest.dev/__cypress/runner/cypress_runner.js:165434:80\n    at tryCatcher (https://serverest.dev/__cypress/runner/cypress_runner.js:13022:23)\n    at Promise._settlePromiseFromHandler (https://serverest.dev/__cypress/runner/cypress_runner.js:10957:31)\n    at Promise._settlePromise (https://serverest.dev/__cypress/runner/cypress_runner.js:11014:18)\n    at Promise._settlePromise0 (https://serverest.dev/__cypress/runner/cypress_runner.js:11059:10)\n    at Promise._settlePromises (https://serverest.dev/__cypress/runner/cypress_runner.js:11139:18)\n    at _drainQueueStep (https://serverest.dev/__cypress/runner/cypress_runner.js:7729:12)\n    at _drainQueue (https://serverest.dev/__cypress/runner/cypress_runner.js:7722:9)\n    at Async.../../node_modules/bluebird/js/release/async.js.Async._drainQueues (https://serverest.dev/__cypress/runner/cypress_runner.js:7738:5)\n    at Async.drainQueues (https://serverest.dev/__cypress/runner/cypress_runner.js:7608:14)\nFrom Your Spec Code:\n    at Context.eval (https://serverest.dev/__cypress/tests?p=cypress\\support\\index.js:492:6)",
+                "diff": null
+              },
+              "uuid": "f58ae6a6-63a7-4bff-b411-2a100ddad6d5",
+              "parentUUID": "a26b99da-fc6e-4731-bfdf-51e3d0d2f291",
+              "isHook": false,
+              "skipped": false
+            },
+            {
+              "title": "Não deve logar com senha em branco",
+              "fullTitle": "CT-RL 005 - INSERÇÃO DE DADOS EM /LOGIN Não deve logar com senha em branco",
+              "timedOut": null,
+              "duration": 703,
+              "state": "failed",
+              "speed": null,
+              "pass": false,
+              "fail": true,
+              "pending": false,
+              "context": null,
+              "code": "cy.loginCodeTrue(newUser.email, user.null.password);",
+              "err": {
+                "message": "CypressError: `cy.request()` failed on:\n\nhttps://serverest.dev/login/\n\nThe response we received from your web server was:\n\n  > 400: Bad Request\n\nThis was considered a failure because the status code was not `2xx` or `3xx`.\n\nIf you do not want status codes to cause failures pass the option: `failOnStatusCode: false`\n\n-----------------------------------------------------------\n\nThe request we sent was:\n\nMethod: POST\nURL: https://serverest.dev/login/\nHeaders: {\n  \"Connection\": \"keep-alive\",\n  \"user-agent\": \"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Cypress/9.7.0 Chrome/100.0.4896.75 Electron/18.0.4 Safari/537.36\",\n  \"accept\": \"*/*\",\n  \"accept-encoding\": \"gzip, deflate\",\n  \"content-type\": \"application/json\",\n  \"content-length\": 61\n}\nBody: {\"email\":\"testing.Ednilson.Xavier58@gmail.com\",\"password\":\"\"}\n\n-----------------------------------------------------------\n\nThe response we got was:\n\nStatus: 400 - Bad Request\nHeaders: {\n  \"access-control-allow-origin\": \"*\",\n  \"x-dns-prefetch-control\": \"off\",\n  \"x-frame-options\": \"SAMEORIGIN\",\n  \"strict-transport-security\": \"max-age=15552000; includeSubDomains\",\n  \"x-download-options\": \"noopen\",\n  \"x-content-type-options\": \"nosniff\",\n  \"x-xss-protection\": \"1; mode=block\",\n  \"x-moesif-transaction-id\": \"9ed967e2-edb3-4aa7-94ef-cac03a7451b5\",\n  \"content-type\": \"application/json; charset=utf-8\",\n  \"x-cloud-trace-context\": \"9952b5d4fbd78fd87bce5d1800d860ed\",\n  \"date\": \"Wed, 22 Jun 2022 16:56:54 GMT\",\n  \"server\": \"Google Frontend\",\n  \"content-length\": \"56\"\n}\nBody: {\n  \"password\": \"password não pode ficar em branco\"\n}\n\n\nhttps://on.cypress.io/request",
+                "estack": "CypressError: `cy.request()` failed on:\n\nhttps://serverest.dev/login/\n\nThe response we received from your web server was:\n\n  > 400: Bad Request\n\nThis was considered a failure because the status code was not `2xx` or `3xx`.\n\nIf you do not want status codes to cause failures pass the option: `failOnStatusCode: false`\n\n-----------------------------------------------------------\n\nThe request we sent was:\n\nMethod: POST\nURL: https://serverest.dev/login/\nHeaders: {\n  \"Connection\": \"keep-alive\",\n  \"user-agent\": \"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Cypress/9.7.0 Chrome/100.0.4896.75 Electron/18.0.4 Safari/537.36\",\n  \"accept\": \"*/*\",\n  \"accept-encoding\": \"gzip, deflate\",\n  \"content-type\": \"application/json\",\n  \"content-length\": 61\n}\nBody: {\"email\":\"testing.Ednilson.Xavier58@gmail.com\",\"password\":\"\"}\n\n-----------------------------------------------------------\n\nThe response we got was:\n\nStatus: 400 - Bad Request\nHeaders: {\n  \"access-control-allow-origin\": \"*\",\n  \"x-dns-prefetch-control\": \"off\",\n  \"x-frame-options\": \"SAMEORIGIN\",\n  \"strict-transport-security\": \"max-age=15552000; includeSubDomains\",\n  \"x-download-options\": \"noopen\",\n  \"x-content-type-options\": \"nosniff\",\n  \"x-xss-protection\": \"1; mode=block\",\n  \"x-moesif-transaction-id\": \"9ed967e2-edb3-4aa7-94ef-cac03a7451b5\",\n  \"content-type\": \"application/json; charset=utf-8\",\n  \"x-cloud-trace-context\": \"9952b5d4fbd78fd87bce5d1800d860ed\",\n  \"date\": \"Wed, 22 Jun 2022 16:56:54 GMT\",\n  \"server\": \"Google Frontend\",\n  \"content-length\": \"56\"\n}\nBody: {\n  \"password\": \"password não pode ficar em branco\"\n}\n\n\nhttps://on.cypress.io/request\n    at https://serverest.dev/__cypress/runner/cypress_runner.js:165434:80\n    at tryCatcher (https://serverest.dev/__cypress/runner/cypress_runner.js:13022:23)\n    at Promise._settlePromiseFromHandler (https://serverest.dev/__cypress/runner/cypress_runner.js:10957:31)\n    at Promise._settlePromise (https://serverest.dev/__cypress/runner/cypress_runner.js:11014:18)\n    at Promise._settlePromise0 (https://serverest.dev/__cypress/runner/cypress_runner.js:11059:10)\n    at Promise._settlePromises (https://serverest.dev/__cypress/runner/cypress_runner.js:11139:18)\n    at _drainQueueStep (https://serverest.dev/__cypress/runner/cypress_runner.js:7729:12)\n    at _drainQueue (https://serverest.dev/__cypress/runner/cypress_runner.js:7722:9)\n    at Async.../../node_modules/bluebird/js/release/async.js.Async._drainQueues (https://serverest.dev/__cypress/runner/cypress_runner.js:7738:5)\n    at Async.drainQueues (https://serverest.dev/__cypress/runner/cypress_runner.js:7608:14)\nFrom Your Spec Code:\n    at Context.eval (https://serverest.dev/__cypress/tests?p=cypress\\support\\index.js:492:6)",
+                "diff": null
+              },
+              "uuid": "c620ad4a-0792-4d36-bda2-edc1f7d15698",
+              "parentUUID": "a26b99da-fc6e-4731-bfdf-51e3d0d2f291",
+              "isHook": false,
+              "skipped": false
+            }
+          ],
+          "suites": [],
+          "passes": [
+            "f822dab5-6376-4009-9e8e-46be3188afa9",
+            "24cb1545-6702-4472-99bb-c6c9c8495adb"
+          ],
+          "failures": [
+            "8b575c0d-c573-423a-8177-bd87c2aa08dc",
+            "f58ae6a6-63a7-4bff-b411-2a100ddad6d5",
+            "c620ad4a-0792-4d36-bda2-edc1f7d15698"
+          ],
+          "pending": [],
+          "skipped": [],
+          "duration": 3094,
+          "root": false,
+          "rootEmpty": false,
+          "_timeout": 2000
+        }
+      ],
+      "passes": [],
+      "failures": [],
+      "pending": [],
+      "skipped": [],
+      "duration": 0,
+      "root": true,
+      "rootEmpty": true,
+      "_timeout": 2000
+    }
+  ],
+  "meta": {
+    "mocha": {
+      "version": "7.0.1"
+    },
+    "mochawesome": {
+      "options": {
+        "quiet": false,
+        "reportFilename": "mochawesome",
+        "saveHtml": false,
+        "saveJson": true,
+        "consoleReporter": "spec",
+        "useInlineDiffs": false,
+        "code": true
+      },
+      "version": "7.1.3"
+    },
+    "marge": {
+      "options": {
+        "id": "default",
+        "reportDir": "cypress/reports/mocha",
+        "quite": true,
+        "overwrite": false,
+        "html": false,
+        "json": true
+      },
+      "version": "6.2.0"
+    }
+  }
+}
